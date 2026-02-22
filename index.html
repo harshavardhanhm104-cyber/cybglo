@@ -592,12 +592,12 @@
             position: relative;
         }
 
-        /* Hide Sections Initially */
+        /* Sections Initially */
         .hidden {
             display: none;
         }
 
-        /* Mobile Navigation Styles */
+        /* Mobile Navigation */
         .mobile-nav-toggle {
             display: none;
             background: transparent;
@@ -613,7 +613,7 @@
             z-index: 101;
         }
 
-        /* Back to Top Button */
+        /* Back to Top */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -646,7 +646,7 @@
             transform: translateY(-3px);
         }
 		
-		/* Chatbot Styles - Enhanced with Avatar & Fixes */
+		/* Chatbot Styles */
 #chatbot-icon {
     position: fixed;
     bottom: 90px;
@@ -668,7 +668,7 @@
 }
 
 #chatbot-icon.show {
-    display: flex; /* Only shown when user is logged in */
+    display: flex;
 }
 
 #chatbot-icon:hover {
@@ -784,7 +784,6 @@
     color: #0083b0;
 }
 
-/* Keyframes for animations */
 @keyframes shakeBounce {
     0% { transform: translate(0, 0); }
     25% { transform: translate(-2px, -4px); }
@@ -803,7 +802,6 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-        /* Skip to Content Link */
         .skip-to-content {
             position: absolute;
             left: -9999px;
@@ -819,13 +817,11 @@
             left: 0;
         }
 
-        /* Focus styles for accessibility */
         a:focus, button:focus, input:focus {
             outline: 3px solid #0288d1;
             outline-offset: 3px;
         }
 
-        /* User Status Display */
         .user-status {
             position: absolute;
             top: 20px;
@@ -846,8 +842,6 @@
         .user-status.guest {
             background: rgba(255, 165, 0, 0.8);
         }
-
-        /* Logout Button */
         .logout-btn {
             position: absolute;
             top: 20px;
@@ -867,7 +861,6 @@
             display: block;
         }
 
-        /* Responsive Styles */
         @media (max-width: 992px) {
             .header-container {
                 flex-direction: column;
@@ -927,8 +920,6 @@
                 margin: 5px;
             }
         }
-
-        /* Auth System Styles */
         .auth-btn {
             padding: 8px 16px;
             margin-left: 10px;
@@ -1050,31 +1041,20 @@
     </style>
 </head>
 <body>
-    <!-- Skip to Content Link (Accessibility) -->
     <a href="#main-content" class="skip-to-content">Skip to Content</a>
-
-    <!-- User Status Display -->
     <div id="user-status" class="user-status guest">
         <i class="fas fa-user"></i> <span id="status-text">Guest User</span>
     </div>
-
-    <!-- Logout Button (Hidden by Default) -->
     <button id="logout-btn" class="logout-btn" onclick="handleLogout()">
         <i class="fas fa-sign-out-alt"></i> Logout
     </button>
-
-    <!-- Auth Buttons Top Right -->
     <div id="auth-buttons" style="position: absolute; top: 20px; right: 20px; z-index: 999;">
         <button onclick="showForm('login')" class="auth-btn login-btn"><i class="fas fa-lock"></i> Login</button>
         <button onclick="showForm('signup')" class="auth-btn signup-btn"><i class="fas fa-user-shield"></i> Sign Up</button>
     </div>
-
-    <!-- Chatbot Icon (Hidden by Default - Only for Logged-in Users) -->
     <div id="chatbot-icon" title="Chat with CYBGLO Bot - Login Required">
         <i class="fas fa-robot"></i>
     </div>
-
-    <!-- Auth Modal Forms -->
     <div id="auth-wrapper">
         <div id="auth-modal">
             <div id="auth-tabs">
@@ -1082,71 +1062,53 @@
                 <span onclick="showForm('signup')" class="tab">Sign Up</span>
                 <span onclick="hideAuth()" class="close-auth">&times;</span>
             </div>
-
-            <!-- Login Form -->
             <form id="login-form" class="auth-form hidden" onsubmit="return handleLogin(event)">
                 <label><i class="fas fa-envelope"></i> Email</label>
                 <input type="email" id="login-email" required>
-
                 <label><i class="fas fa-lock"></i> Password</label>
                 <div class="password-field">
                     <input type="password" id="login-password" required>
                     <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                 </div>
-
                 <div class="forgot" onclick="showForgot()">Forgot Password?</div>
                 <button type="submit" class="auth-submit">Login</button>
             </form>
-
-            <!-- Sign Up Form -->
             <form id="signup-form" class="auth-form hidden" onsubmit="return handleSignup(event)">
                 <label><i class="fas fa-envelope"></i> Email</label>
                 <input type="email" id="signup-email" required>
-
                 <label><i class="fas fa-lock"></i> Password</label>
                 <div class="password-field">
                     <input type="password" id="signup-password" required oninput="checkStrength(this)">
                     <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                     <div id="password-strength"></div>
                 </div>
-
                 <label><i class="fas fa-lock"></i> Confirm Password</label>
                 <div class="password-field">
                     <input type="password" id="signup-confirm" required>
                     <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                 </div>
-
                 <label><i class="fas fa-city"></i> City</label>
                 <input type="text" id="signup-city" required>
-
                 <label><i class="fas fa-globe"></i> Country</label>
                 <select id="signup-country" required></select>
-
                 <p class="cyber-tip">🛡️ Tip: Use a strong, unique password and never share your credentials.</p>
-
                 <button type="submit" class="auth-submit">Sign Up</button>
             </form>
-
-            <!-- Forgot Password -->
             <form id="forgot-form" class="auth-form hidden" onsubmit="return handleForgot(event)">
                 <label><i class="fas fa-lock"></i> New Password</label>
                 <div class="password-field">
                     <input type="password" id="forgot-new" required>
                     <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                 </div>
-
                 <label><i class="fas fa-lock"></i> Confirm New Password</label>
                 <div class="password-field">
                     <input type="password" id="forgot-confirm" required>
                     <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
                 </div>
-
                 <button type="submit" class="auth-submit">Reset Password</button>
             </form>
         </div>
     </div>
-
-    <!-- Header Section -->
     <header class="main-header">
         <div class="header-container">
             <div class="logo">
@@ -1155,8 +1117,6 @@
             <h1 class="site-title">CYBGLO</h1>
         </div>
     </header>
-
-    <!-- Marquee Section -->
     <div class="marquee-container">
         <div class="marquee-inner">
             <div class="marquee-text">
@@ -1170,8 +1130,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Navigation Section -->
     <nav class="main-nav">
         <div class="nav-container">
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -1194,9 +1152,7 @@
     </nav>
 
     <div class="section-container" id="main-content">
-        <!-- Dynamic Content Sections -->
         <main id="content-container">
-            <!-- Home Section (Default Visible) -->
             <section class="content" id="home">
                 <h2>Why We Need to Learn Cyber Laws and Stay Updated with Cyber News</h2>
                 <ul>
@@ -1213,8 +1169,6 @@
                     <p><strong>Benefits:</strong> Get personalized assistance, quick responses to your queries, and interactive learning experience.</p>
                 </div>
             </section>
-
-            <!-- Cyber Laws Section -->
             <section class="content hidden" id="cyber-laws">
   <h2><i class="fas fa-shield-alt" style="color:#007bff;"></i> Cyber Laws in India: A Brief Overview</h2>
   <p>
@@ -1262,7 +1216,6 @@
     <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 67B:</strong> Child pornography – 5 to 7 years + ₹10 Lakh fine.</li>
   </ul>
 </section>
-            <!-- Cyber News Section -->
             <section class="content hidden" id="cyber-news">
   <h2><i class="fas fa-globe"></i> Global Cyber News</h2>
 <br>
@@ -1316,7 +1269,6 @@
  </br>
             </section>
 
-            <!-- Cyber Attacks Section -->
             <section class="content hidden" id="cyber-attacks">
 <h2><i class="fas fa-bug" style="color: red;"></i> Most dangerous and Common Cyber Attacks</h2>
   <ul>
@@ -1362,7 +1314,6 @@
                 </div>
             </section>
 
-            <!-- Cyber Defence Section -->
             <section class="content hidden" id="cyber-defence">
                 <h2><i class="fas fa-shield-alt" style="color: green;"></i> Most Powerful Cyber Defenses Used by Companies</h2>
 <br>
@@ -1425,7 +1376,6 @@
   </ul>
             </section>
 
-            <!-- Vulnerable Devices Section -->
             <section class="content hidden" id="vulnerable-devices">
                <h2><i class="fas fa-exclamation-triangle" style="color: red;"></i> Vulnerable Devices and Systems</h2>
   <ul style="list-style: none; padding-left: 0;">
@@ -1491,8 +1441,6 @@
   </ul>
 
             </section>
-
-            <!-- cyber threats -->
             <section class="content hidden" id="cyber-threats">
 <h2><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> Emerging Cyber Threats</h2>
 <br>
@@ -1559,7 +1507,6 @@
 <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Hybrid Warfare Cyber Components:</strong> Cyberattacks are increasingly integrated into hybrid warfare strategies, used in conjunction with conventional and other non-kinetic tactics to achieve strategic objectives.</p>
 </br>
             </section>
-			<!-- cyber-awareness-->
 			
             <section class="content hidden" id="cyber-awareness">
                 <h2><i class="fas fa-brain" style="color: pink;"></i> Cyber Safety Tips</h2>
@@ -1595,7 +1542,6 @@
   </ul>
             </section>
 			
-			<!--vulnerable-places-->
 			
             <section class="content hidden" id="vulnerable-places">
 <h2><i class="fas fa-exclamation-triangle" style="color: #f39c12;"></i>Vulnerable-Places Across The World </h2>
@@ -1672,9 +1618,7 @@
     </li>
   </ul>
 </section>
-			
-			<!--safety-tips-->
-			
+						
             <section class="content hidden" id="safety-tips">
 <h2><i class="fas fa-shield-halved" style="color: green;"></i> Cyber Safety Tips</h2>
   
@@ -1701,10 +1645,7 @@
   <p><i class="fas fa-shield" style="color: green;"></i> <strong>Educate Yourself and Stay Informed About Cyber Threats:</strong> The cyber threat landscape is constantly evolving. Make an effort to stay informed about the latest scams, attack techniques, and security best practices. Follow reputable cybersecurity news sources and be proactive in learning how to protect yourself and your devices. Awareness is a powerful defense against many common cyber threats. Share this knowledge with family and friends to create a more secure digital environment for everyone.</p>
 </br>
   <p><i class="fas fa-shield" style="color: green;"></i> <strong>Practice the Principle of Least Privilege:</strong> On your devices and within your accounts, only grant the necessary permissions required for a user or application to perform its intended tasks. Avoid running with administrative privileges unless absolutely necessary, as this limits the potential damage if an account or application is compromised. Regularly review the permissions granted to apps and users and revoke any that are no longer needed. This principle helps contain the impact of a security breach.</p>
-            </section>
-			
-			<!--others-->
-			
+            </section>			
             <section class="content hidden" id="others">
                 <h2 style="margin-bottom: 20px;"><i class="fas fa-globe" style="color: #007BFF;"></i> Global Cyberattack Landscape (2023)</h2>
 
@@ -1808,8 +1749,6 @@
     <li><strong>Tamil Nadu:</strong> Facial Recognition Software portal compromised, affecting over 6 million records. <em>(The Cyber Express)</em></li>
   </ul>
             </section>
-
-            <!-- Useful Links Section (Always Visible) -->
             <section class="useful-links">
                 <h2>USEFUL LINKS</h2>
                 <div class="links-container">
@@ -1834,12 +1773,9 @@
         </main>
     </div>
 
-    <!-- Back to Top Button -->
     <button class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
-
-    <!-- Chatbot Box (Hidden by Default) -->
     <div id="chatbot-box" class="hidden">
         <div id="chatbot-header">
             <span><i class="fas fa-robot"></i> CYBGLO Chatbot</span>
@@ -1863,8 +1799,6 @@
             <div id="chatbot-response"></div>
         </div>
     </div>
-
-    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-content">
@@ -1887,17 +1821,14 @@
     </footer>
 
     <script>
-// Global variables
 let isLoggedIn = false;
 let userEmail = '';
 
-// Check login status on page load
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();
     initializeApp();
 });
 
-// Check if user is logged in
 function checkLoginStatus() {
     const loginStatus = localStorage.getItem('cybglo-loggedin');
     const savedEmail = localStorage.getItem('cybglo-user-email');
@@ -1911,23 +1842,18 @@ function checkLoginStatus() {
         showGuestState();
     }
 }
-
-// Show logged-in user state
 function showLoggedInState() {
-    // Update user status
     const userStatus = document.getElementById('user-status');
     const statusText = document.getElementById('status-text');
     if (userStatus && statusText) {
         userStatus.className = 'user-status logged-in';
         statusText.innerHTML = `<i class="fas fa-user-check"></i> ${userEmail}`;
 
-        // Show logout button, hide auth buttons
         const logoutBtn = document.getElementById('logout-btn');
         const authButtons = document.getElementById('auth-buttons');
         if (logoutBtn) logoutBtn.classList.add('show');
         if (authButtons) authButtons.style.display = 'none';
 
-        // Show chatbot icon
         const chatbotIcon = document.getElementById('chatbot-icon');
         if (chatbotIcon) {
             chatbotIcon.classList.add('show');
@@ -1936,22 +1862,18 @@ function showLoggedInState() {
     }
 }
 
-// Show guest user state  
 function showGuestState() {
-    // Update user status
     const userStatus = document.getElementById('user-status');
     const statusText = document.getElementById('status-text');
     if (userStatus && statusText) {
         userStatus.className = 'user-status guest';
         statusText.innerHTML = '<i class="fas fa-user"></i> Guest User';
 
-        // Hide logout button, show auth buttons
         const logoutBtn = document.getElementById('logout-btn');
         const authButtons = document.getElementById('auth-buttons');
         if (logoutBtn) logoutBtn.classList.remove('show');
         if (authButtons) authButtons.style.display = 'block';
 
-        // Hide chatbot icon
         const chatbotIcon = document.getElementById('chatbot-icon');
         const chatbotBox = document.getElementById('chatbot-box');
         if (chatbotIcon) chatbotIcon.classList.remove('show');
@@ -1959,31 +1881,23 @@ function showGuestState() {
     }
 }
 
-// Initialize app components
 function initializeApp() {
-    // Visitor Counter
     let count = localStorage.getItem('visitorCount') || 0;
     count = parseInt(count) + 1;
     localStorage.setItem('visitorCount', count);
     const visitorCountEl = document.getElementById('visitorCount');
     if (visitorCountEl) visitorCountEl.textContent = count;
 
-    // Navigation functionality
     initializeNavigation();
-    
-    // Chatbot functionality (only if logged in)
-    if (isLoggedIn) {
+        if (isLoggedIn) {
         initializeChatbot();
     }
 
-    // Country dropdown
     initializeCountryDropdown();
 
-    // Back to top button
     initializeBackToTop();
 }
 
-// Navigation system
 function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -2011,7 +1925,6 @@ function initializeNavigation() {
         });
     });
 
-    // Mobile Navigation Toggle
     const mobileToggle = document.querySelector('.mobile-nav-toggle');
     const navLinksContainer = document.querySelector('.nav-links');
 
@@ -2022,7 +1935,6 @@ function initializeNavigation() {
             navLinksContainer.classList.toggle('active');
         });
 
-        // Close mobile nav when clicking outside
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.nav-container') && !e.target.closest('.mobile-nav-toggle')) {
                 navLinksContainer.classList.remove('active');
@@ -2032,7 +1944,6 @@ function initializeNavigation() {
     }
 }
 
-// Chatbot system (only for logged-in users)
 function initializeChatbot() {
     const chatbotIcon = document.getElementById('chatbot-icon');
     const chatbotBox = document.getElementById('chatbot-box');
@@ -2053,7 +1964,6 @@ function initializeChatbot() {
         "others": "Additional Resources: Explore cybersecurity tools, international compliance standards, incident response procedures, and specialized training programs."
     };
 
-    // Chatbot icon click handler
     if (chatbotIcon) {
         chatbotIcon.addEventListener('click', function() {
             if (isLoggedIn) {
@@ -2065,7 +1975,6 @@ function initializeChatbot() {
         });
     }
 
-    // Chatbot button handlers
     chatbotButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             const key = btn.getAttribute('data-section');
@@ -2074,7 +1983,6 @@ function initializeChatbot() {
         });
     });
 
-    // Typing animation for chatbot responses
     function typeText(text) {
         if (!chatbotResponse) return;
         
@@ -2106,13 +2014,11 @@ function initializeChatbot() {
     }
 }
 
-// Close chatbot
 function closeChatbot() {
     const chatbotBox = document.getElementById('chatbot-box');
     if (chatbotBox) chatbotBox.classList.add('hidden');
 }
 
-// Country dropdown initialization
 function initializeCountryDropdown() {
     const countries = ["Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahrain", "Bangladesh", "Belarus", "Belgium", "Bolivia", "Bosnia and Herzegovina", "Brazil", "Bulgaria", "Cambodia", "Canada", "Chile", "China", "Colombia", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Estonia", "Ethiopia", "Finland", "France", "Georgia", "Germany", "Ghana", "Greece", "Guatemala", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Latvia", "Lebanon", "Lithuania", "Luxembourg", "Malaysia", "Mexico", "Morocco", "Netherlands", "New Zealand", "Nicaragua", "Nigeria", "Norway", "Pakistan", "Panama", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saudi Arabia", "Serbia", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Thailand", "Tunisia", "Turkey", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Venezuela", "Vietnam"];
     
@@ -2127,7 +2033,6 @@ function initializeCountryDropdown() {
     }
 }
 
-// Back to top button
 function initializeBackToTop() {
     const backToTopButton = document.querySelector('.back-to-top');
 
@@ -2146,9 +2051,8 @@ function initializeBackToTop() {
     }
 }
 
-// Authentication System
 function showForm(type) {
-    console.log('showForm called with type:', type); // Debug log
+    console.log('showForm called with type:', type); 
     
     const wrapper = document.getElementById('auth-wrapper');
     if (!wrapper) {
@@ -2158,7 +2062,6 @@ function showForm(type) {
     
     wrapper.style.display = 'flex';
     
-    // Hide all forms first
     ['login-form', 'signup-form', 'forgot-form'].forEach(id => {
         const form = document.getElementById(id);
         if (form) {
@@ -2169,7 +2072,6 @@ function showForm(type) {
         }
     });
     
-    // Show target form
     const targetForm = document.getElementById(`${type}-form`);
     if (targetForm) {
         targetForm.classList.remove('hidden');
@@ -2190,17 +2092,14 @@ function hideAuth() {
     }
 }
 
-// Add this function to test forgot password form opening
 function testForgotForm() {
     console.log('Testing forgot form...');
     showForm('forgot');
 }
 
-// Add event listeners for debugging
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, checking form elements...');
     
-    // Check if required elements exist
     const authWrapper = document.getElementById('auth-wrapper');
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
@@ -2248,7 +2147,6 @@ function checkStrength(input) {
     }
 }
 
-// Helper function to login user
 function login(email) {
     isLoggedIn = true;
     userEmail = email;
@@ -2258,7 +2156,6 @@ function login(email) {
     initializeChatbot();
 }
 
-// Helper function to show custom alert
 function showCustomAlert(message) {
     alert(message);
 }
@@ -2271,8 +2168,6 @@ function handleSignup(e) {
         city: document.getElementById('signup-city').value.trim(),
         country: document.getElementById('signup-country').value.trim()
     };
-
-    // Client-side validation
     if (!data.email || !data.password || !data.city || !data.country) {
         showCustomAlert('❌ Please fill in all required fields.');
         return;
@@ -2312,7 +2207,6 @@ function handleLogin(e) {
         password: document.getElementById('login-password').value.trim()
     };
 
-    // Client-side validation
     if (!data.email || !data.password) {
         showCustomAlert('❌ Please fill in both email and password fields.');
         return;
@@ -2390,26 +2284,21 @@ function handleForgot(e) {
 
 function handleLogout() {
     if (confirm('Are you sure you want to logout?')) {
-        // Clear login data
         localStorage.removeItem('cybglo-loggedin');
         localStorage.removeItem('cybglo-user-email');
-        localStorage.removeItem('cybglo-welcome-shown'); // Clear welcome flag too
+        localStorage.removeItem('cybglo-welcome-shown'); 
         
-        // Reset state
         isLoggedIn = false;
         userEmail = '';
         
-        // Update UI
         showGuestState();
         
         alert('✅ You have been logged out successfully.');
         
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
-// Prevent chatbot access for guests
 document.addEventListener('click', function(e) {
     if (e.target.closest('#chatbot-icon') && !isLoggedIn) {
         e.preventDefault();
@@ -2418,7 +2307,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Additional security - hide chatbot if someone tries to manually show it
 setInterval(function() {
     const chatbotIcon = document.getElementById('chatbot-icon');
     const chatbotBox = document.getElementById('chatbot-box');
@@ -2428,7 +2316,6 @@ setInterval(function() {
     }
 }, 1000);
 
-// Welcome message for new users
 function showWelcomeMessage() {
     if (isLoggedIn && !localStorage.getItem('cybglo-welcome-shown')) {
         setTimeout(() => {
@@ -2438,12 +2325,10 @@ function showWelcomeMessage() {
     }
 }
 
-// Show welcome message after login
 if (isLoggedIn) {
     showWelcomeMessage();
 }
 
-// Keyboard accessibility for chatbot
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const chatbotBox = document.getElementById('chatbot-box');
@@ -2458,7 +2343,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Handle window resize for mobile responsiveness
 window.addEventListener('resize', function() {
     if (window.innerWidth > 768) {
         const navLinks = document.querySelector('.nav-links');
@@ -2468,7 +2352,6 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Auto-hide alerts for better UX
 const originalAlert = window.alert;
 window.alert = function(message) {
     const alertDiv = document.createElement('div');
@@ -2487,7 +2370,6 @@ window.alert = function(message) {
         animation: slideInRight 0.3s ease;
     `;
     
-    // Add slide-in animation
     const style = document.createElement('style');
     style.textContent = `
         @keyframes slideInRight {
@@ -2504,7 +2386,6 @@ window.alert = function(message) {
     alertDiv.textContent = message;
     document.body.appendChild(alertDiv);
     
-    // Auto-remove after 3 seconds
     setTimeout(() => {
         alertDiv.style.animation = 'slideOutRight 0.3s ease';
         setTimeout(() => {
@@ -2514,7 +2395,6 @@ window.alert = function(message) {
         }, 300);
     }, 3000);
     
-    // Allow manual close on click
     alertDiv.addEventListener('click', () => {
         alertDiv.style.animation = 'slideOutRight 0.3s ease';
         setTimeout(() => {
@@ -2529,11 +2409,9 @@ function downloadSection(button) {
     const section = button.closest('section').cloneNode(true);
     const title = section.querySelector('h2')?.textContent || 'section';
     
-    // Remove the download button to avoid saving it in the PDF
     const btn = section.querySelector('.download-btn');
     if (btn) btn.remove();
 
-    // Create developer note with timestamp
     const devNote = document.createElement('div');
     devNote.style.marginTop = '20px';
     devNote.style.fontSize = '12px';
@@ -2546,9 +2424,7 @@ function downloadSection(button) {
     
     section.appendChild(devNote);
 
-    // Check if html2pdf is available
     if (typeof html2pdf !== 'undefined') {
-        // PDF options
         const opt = {
             margin: 0.5,
             filename: title.replace(/\s+/g, '_').toLowerCase() + '.pdf',
@@ -2557,10 +2433,8 @@ function downloadSection(button) {
             jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
 
-        // Generate and save PDF
         html2pdf().set(opt).from(section).save();
         
-        // Log the download if user is logged in
         if (isLoggedIn) {
             fetch('https://cybglo.onrender.com/download-log', {
                 method: 'POST',
