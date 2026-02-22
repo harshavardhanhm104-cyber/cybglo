@@ -1,0 +1,2578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBGLO - Cyber Security Awareness</title>
+    <link rel="icon" type="image/x-icon" href="cybglo logo main.jpg">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .main-header {
+            width: 100%;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 80%);
+            animation: rotate 25s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .site-title {
+            font-size: 54px;
+            font-weight: bold;
+            letter-spacing: 6px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .site-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #fff;
+            transition: width 0.5s ease;
+        }
+
+        .site-title:hover::after {
+            width: 100%;
+        }
+
+        .site-title:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Marquee Styles */
+        .marquee-container {
+            width: 100%;
+            background: linear-gradient(to right, #1a237e, #283593, #1a237e);
+            color: #fff;
+            padding: 15px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-inner {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            white-space: nowrap;
+            animation: marqueeAnimation 30s linear infinite;
+        }
+
+        @keyframes marqueeAnimation {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-200%); }
+        }
+
+        .marquee-text {
+            margin-right: 100px;
+            font-size: 20px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .marquee-icon {
+            margin-right: 15px;
+            font-size: 24px;
+            color: #64ffda;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            width: 100%;
+            background: linear-gradient(to right, #0288d1, #26c6da);
+            padding: 5px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            margin: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Active link style */
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Content Styles */
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #00b4db, #0083b0);
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            color: #0288d1;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, #00b4db, #0083b0);
+        }
+
+        .content ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+            list-style-type: none;
+        }
+
+        .content li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .content li::before {
+            content: '\f0e0';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #0288d1;
+        }
+
+        /* Vulnerable Devices Section */
+        .vulnerable-devices {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vulnerable-devices::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+        }
+
+        .vulnerable-devices:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .vulnerable-devices h2 {
+            color: #ff6b6b;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .vulnerable-devices h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, #ff6b6b, #ff8e8e);
+        }
+
+        .vulnerable-devices li::before {
+            color: #ff6b6b;
+        }
+
+        /* Button Styles */
+        .section-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 176, 0.3);
+            text-decoration: none;
+        }
+
+        .section-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 131, 176, 0.4);
+            background: linear-gradient(135deg, #0083b0, #00b4db);
+        }
+
+        .section-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(0, 131, 176, 0.3);
+        }
+
+        .vulnerable-button {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .vulnerable-button:hover {
+            background: linear-gradient(135deg, #ff8e8e, #ff6b6b);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Useful Links Section */
+        .useful-links {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .useful-links::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #00b4db, #0083b0);
+        }
+
+        .useful-links:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .useful-links h2 {
+            color: #0288d1;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .useful-links h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, #00b4db, #0083b0);
+        }
+
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .link-item {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .link-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #0288d1;
+        }
+
+        .link-item i {
+            margin-right: 15px;
+            color: #0288d1;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-item:hover i {
+            transform: scale(1.2);
+        }
+
+        .link-item a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .link-item a:hover {
+            color: #0288d1;
+        }
+
+        /* Footer Styles */
+        footer {
+            width: 100%;
+            background: linear-gradient(135deg, #1a237e, #283593);
+            color: #fff;
+            padding: 40px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-info {
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 15px;
+            color: #fff;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover::before {
+            transform: scale(1.4);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #64ffda;
+        }
+
+        .visitor-counter {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visitor-counter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(0);
+            animation: rotate 10s linear infinite;
+        }
+
+        .visitor-counter span {
+            font-weight: bold;
+            color: #64ffda;
+            position: relative;
+        }
+
+        /* Hide Sections Initially */
+        .hidden {
+            display: none;
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 101;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: linear-gradient(135deg, #0083b0, #00b4db);
+            transform: translateY(-3px);
+        }
+		
+		/* Chatbot Styles - Enhanced with Avatar & Fixes */
+#chatbot-icon {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    color: white;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 32px;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    animation: floaty 3s ease-in-out infinite;
+}
+
+#chatbot-icon.show {
+    display: flex; /* Only shown when user is logged in */
+}
+
+#chatbot-icon:hover {
+    transform: scale(1.1);
+    animation: shakeBounce 0.8s infinite;
+}
+
+#chatbot-box {
+    position: fixed;
+    bottom: 170px;
+    right: 30px;
+    width: 360px;
+    max-height: 500px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    animation: fadeInUp 0.6s ease;
+}
+
+#chatbot-box.hidden {
+    display: none;
+}
+
+#chatbot-header {
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    color: white;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+#chatbot-close {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 10px;
+    color: white;
+    background: transparent;
+    border: none;
+}
+
+#chatbot-body {
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background: #f1f5f8;
+}
+
+#chatbot-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+#chatbot-buttons button {
+    flex: 1 0 45%;
+    padding: 10px;
+    font-size: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #e0f7fa;
+    color: #00796b;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#chatbot-buttons button:hover {
+    background: #b2ebf2;
+    color: #004d40;
+}
+
+#chatbot-response {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.chat-bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    background: #0083b0;
+    color: white;
+    border-radius: 12px 12px 0 12px;
+    align-self: flex-end;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.bot-avatar {
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0083b0;
+}
+
+/* Keyframes for animations */
+@keyframes shakeBounce {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(-2px, -4px); }
+    50% { transform: translate(2px, 4px); }
+    75% { transform: translate(-1px, -2px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+        /* Skip to Content Link */
+        .skip-to-content {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: #0288d1;
+            color: white;
+            padding: 10px 15px;
+            z-index: 1000;
+            transition: left 0.3s ease;
+        }
+
+        .skip-to-content:focus {
+            left: 0;
+        }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus, input:focus {
+            outline: 3px solid #0288d1;
+            outline-offset: 3px;
+        }
+
+        /* User Status Display */
+        .user-status {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 999;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .user-status.logged-in {
+            background: rgba(0, 128, 0, 0.8);
+        }
+
+        .user-status.guest {
+            background: rgba(255, 165, 0, 0.8);
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 100px;
+            background: linear-gradient(135deg, #ff4757, #ff3742);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+        }
+
+        .logout-btn.show {
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .links-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(to right, #0288d1, #26c6da);
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                max-height: 1000px;
+                padding: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .site-title {
+                font-size: 40px;
+            }
+            
+            .marquee-text {
+                font-size: 16px;
+            }
+
+            .user-status, .logout-btn {
+                position: relative;
+                top: 10px;
+                left: 10px;
+                right: auto;
+                margin: 5px;
+            }
+        }
+
+        /* Auth System Styles */
+        .auth-btn {
+            padding: 8px 16px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+        }
+
+        #auth-wrapper {
+            position: fixed;
+            top: 0; 
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #auth-modal {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            width: 350px;
+            max-width: 90%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        #auth-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .tab {
+            font-weight: bold;
+            cursor: pointer;
+            color: #0288d1;
+        }
+
+        .close-auth {
+            cursor: pointer;
+            color: red;
+            font-size: 20px;
+        }
+
+        .auth-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .auth-form input, .auth-form select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .auth-submit {
+            background: #0288d1;
+            color: white;
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .forgot {
+            text-align: right;
+            font-size: 12px;
+            margin-top: 5px;
+            cursor: pointer;
+            color: #0077b6;
+        }
+
+        .password-field {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
+
+        .cyber-tip {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #e0f7fa;
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        #password-strength {
+            font-size: 12px;
+            color: green;
+            margin-top: 5px;
+        }
+	    
+    </style>
+</head>
+<body>
+    <!-- Skip to Content Link (Accessibility) -->
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
+
+    <!-- User Status Display -->
+    <div id="user-status" class="user-status guest">
+        <i class="fas fa-user"></i> <span id="status-text">Guest User</span>
+    </div>
+
+    <!-- Logout Button (Hidden by Default) -->
+    <button id="logout-btn" class="logout-btn" onclick="handleLogout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+
+    <!-- Auth Buttons Top Right -->
+    <div id="auth-buttons" style="position: absolute; top: 20px; right: 20px; z-index: 999;">
+        <button onclick="showForm('login')" class="auth-btn login-btn"><i class="fas fa-lock"></i> Login</button>
+        <button onclick="showForm('signup')" class="auth-btn signup-btn"><i class="fas fa-user-shield"></i> Sign Up</button>
+    </div>
+
+    <!-- Chatbot Icon (Hidden by Default - Only for Logged-in Users) -->
+    <div id="chatbot-icon" title="Chat with CYBGLO Bot - Login Required">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- Auth Modal Forms -->
+    <div id="auth-wrapper">
+        <div id="auth-modal">
+            <div id="auth-tabs">
+                <span onclick="showForm('login')" class="tab">Login</span>
+                <span onclick="showForm('signup')" class="tab">Sign Up</span>
+                <span onclick="hideAuth()" class="close-auth">&times;</span>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form hidden" onsubmit="return handleLogin(event)">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="login-email" required>
+
+                <label><i class="fas fa-lock"></i> Password</label>
+                <div class="password-field">
+                    <input type="password" id="login-password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                </div>
+
+                <div class="forgot" onclick="showForgot()">Forgot Password?</div>
+                <button type="submit" class="auth-submit">Login</button>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="auth-form hidden" onsubmit="return handleSignup(event)">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="signup-email" required>
+
+                <label><i class="fas fa-lock"></i> Password</label>
+                <div class="password-field">
+                    <input type="password" id="signup-password" required oninput="checkStrength(this)">
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                    <div id="password-strength"></div>
+                </div>
+
+                <label><i class="fas fa-lock"></i> Confirm Password</label>
+                <div class="password-field">
+                    <input type="password" id="signup-confirm" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                </div>
+
+                <label><i class="fas fa-city"></i> City</label>
+                <input type="text" id="signup-city" required>
+
+                <label><i class="fas fa-globe"></i> Country</label>
+                <select id="signup-country" required></select>
+
+                <p class="cyber-tip">🛡️ Tip: Use a strong, unique password and never share your credentials.</p>
+
+                <button type="submit" class="auth-submit">Sign Up</button>
+            </form>
+
+            <!-- Forgot Password -->
+            <form id="forgot-form" class="auth-form hidden" onsubmit="return handleForgot(event)">
+                <label><i class="fas fa-lock"></i> New Password</label>
+                <div class="password-field">
+                    <input type="password" id="forgot-new" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                </div>
+
+                <label><i class="fas fa-lock"></i> Confirm New Password</label>
+                <div class="password-field">
+                    <input type="password" id="forgot-confirm" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword(this)"></i>
+                </div>
+
+                <button type="submit" class="auth-submit">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="cybglo logo main.jpg" alt="CYBGLO Logo">
+            </div>
+            <h1 class="site-title">CYBGLO</h1>
+        </div>
+    </header>
+
+    <!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee-inner">
+            <div class="marquee-text">
+                <i class="fas fa-shield-alt marquee-icon"></i> Learn cyber laws and follow the cyber law to increase the awareness
+            </div>
+            <div class="marquee-text">
+                <i class="fas fa-exclamation-triangle marquee-icon"></i> Beware of the cyber frauds and cyber attacks - stay vigilant online
+            </div>
+            <div class="marquee-text">
+                <i class="fas fa-graduation-cap marquee-icon"></i> This CybGlo site will help you improve your knowledge about the cyber field in the era of cybees
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Section -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="main-nav">
+                <li><a href="#" class="nav-link active" data-section="home">HOME</a></li>
+                <li><a href="#" class="nav-link" data-section="cyber-laws">CYBER LAWS</a></li>
+                <li><a href="#" class="nav-link" data-section="cyber-news">CYBER NEWS</a></li>
+                <li><a href="#" class="nav-link" data-section="cyber-attacks">CYBER ATTACKS</a></li>
+                <li><a href="#" class="nav-link" data-section="cyber-defence">CYBER DEFENCE</a></li>
+                <li><a href="#" class="nav-link" data-section="cyber-threats">CYBER THREATS</a></li>
+                <li><a href="#" class="nav-link" data-section="cyber-awareness">CYBER AWARENESS</a></li>
+                <li><a href="#" class="nav-link" data-section="vulnerable-places">VULNERABLE PLACES</a></li>
+                <li><a href="#" class="nav-link" data-section="vulnerable-devices">VULNERABLE DEVICES</a></li>
+                <li><a href="#" class="nav-link" data-section="safety-tips">SAFETY TIPS</a></li>
+                <li><a href="#" class="nav-link" data-section="others">OTHERS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="section-container" id="main-content">
+        <!-- Dynamic Content Sections -->
+        <main id="content-container">
+            <!-- Home Section (Default Visible) -->
+            <section class="content" id="home">
+                <h2>Why We Need to Learn Cyber Laws and Stay Updated with Cyber News</h2>
+                <ul>
+                    <li><strong>Digital Identity Protection:</strong> Understanding cyber laws helps individuals protect their digital identity against theft and misuse.</li>
+                    <li><strong>Financial Security:</strong> Knowledge of cyber laws and awareness of current threats helps protect against financial fraud.</li>
+                    <li><strong>Personal Data Protection:</strong> Cyber laws establish frameworks for how personal data should be handled.</li>
+                    <li><strong>Prevention of Cyberbullying:</strong> Awareness of cyber laws related to harassment and bullying can help protect vulnerable individuals.</li>
+                    <li><strong>Corporate Compliance:</strong> Businesses need to understand cyber regulations to ensure compliance.</li>
+                    <li><strong>National Security:</strong> Cyber attacks can target critical infrastructure and government systems.</li>
+                </ul>
+                <div style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #2196f3;">
+                    <h3 style="color: #1976d2; margin-bottom: 10px;"><i class="fas fa-info-circle"></i> For Account Holders Only</h3>
+                    <p>🤖 <strong>AI Chatbot Support:</strong> Login to access our intelligent chatbot that can provide instant answers about cyber security topics, laws, and safety tips.</p>
+                    <p><strong>Benefits:</strong> Get personalized assistance, quick responses to your queries, and interactive learning experience.</p>
+                </div>
+            </section>
+
+            <!-- Cyber Laws Section -->
+            <section class="content hidden" id="cyber-laws">
+  <h2><i class="fas fa-shield-alt" style="color:#007bff;"></i> Cyber Laws in India: A Brief Overview</h2>
+  <p>
+    Cyber law in India primarily revolves around the <strong>Information Technology Act, 2000 (IT Act 2000)</strong> and its amendments. This legislation provides legal recognition for electronic transactions and addresses cybercrimes. It aims to create a secure environment for online activities, covering aspects like e-commerce, digital signatures, and prevention of cyber offenses such as hacking, data theft, and cyber fraud.
+  </p>
+  <p>
+    The cyber law framework also intersects with other laws like the <strong>Indian Penal Code (IPC)</strong> and the <strong>Indian Evidence Act</strong> to ensure a comprehensive legal structure for electronic records and offenses.
+  </p>
+
+  <h3><i class="fas fa-shield-alt" style="color:#007bff;"></i> The Information Technology Act, 2000 and Amendments</h3>
+  <ul>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> The IT Act 2000 consists of 94 sections and was amended by the IT (Amendment) Act, 2008.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> Introduced the definition of <strong>"electronic signature"</strong>.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> Made companies liable for compensation when handling sensitive data negligently.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> Established <strong>CERT-In</strong> to respond to cybersecurity incidents.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> Included provisions regarding the operation and regulation of cyber cafes.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> While newer drafts like the IT Amendment Bill 2023 have been proposed, the IT Act 2000 (as amended in 2008) remains the core legal structure.</li>
+  </ul>
+
+  <h3><i class="fas fa-shield-alt" style="color:#007bff;"></i> Related Laws in the Indian Penal Code (IPC)</h3>
+  <ul>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 420:</strong> Cheating – Up to 7 years imprisonment and fine.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 463:</strong> Forgery – Up to 2 years imprisonment or fine or both.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 468:</strong> Forgery for cheating – Up to 7 years imprisonment and fine.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 469:</strong> Forgery to harm reputation – Up to 3 years imprisonment and fine.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 499:</strong> Defamation – Up to 2 years imprisonment or fine or both.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 500:</strong> Punishment for defamation – Same as above.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 503:</strong> Criminal intimidation – Up to 2 years imprisonment or fine or both.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 506:</strong> Punishment for criminal intimidation – Up to 7 years based on threat severity.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 507:</strong> Anonymous intimidation – Additional 2 years over Section 506.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 509:</strong> Insulting the modesty of a woman – Up to 3 years imprisonment and fine.</li>
+  </ul>
+
+  <h3><i class="fas fa-shield-alt" style="color:#007bff;"></i> Major IT Act 2000 Offenses & Penalties</h3>
+  <ul>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 65:</strong> Tampering with computer source – Up to 3 years or ₹2 Lakh fine or both.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 66:</strong> Hacking or data alteration – Same as above.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 66B:</strong> Receiving stolen digital property – Up to 3 years or ₹1 Lakh fine or both.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 66C:</strong> Identity theft – Up to 3 years + ₹1 Lakh fine.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 66D:</strong> Cheating by personation – Up to 3 years + ₹1 Lakh fine.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 66E:</strong> Privacy violation – Up to 3 years or ₹2 Lakh fine or both.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 66F:</strong> Cyber terrorism – Imprisonment for life.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 67:</strong> Publishing obscene content – 3 to 5 years + ₹5–10 Lakh fine.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 67A:</strong> Sexually explicit content – 5 to 7 years + ₹10 Lakh fine.</li>
+    <li><i class="fas fa-shield-alt" style="color:#007bff;"></i> <strong>Section 67B:</strong> Child pornography – 5 to 7 years + ₹10 Lakh fine.</li>
+  </ul>
+</section>
+            <!-- Cyber News Section -->
+            <section class="content hidden" id="cyber-news">
+  <h2><i class="fas fa-globe"></i> Global Cyber News</h2>
+<br>
+  <p><i class="fas fa-globe"></i> <strong>Global Takedown Disrupts Danabot Malware-as-a-Service Infrastructure:</strong> A significant international law enforcement operation, spearheaded by the FBI, has successfully disrupted the operational infrastructure of the Danabot malware. Danabot functioned as a sophisticated Malware-as-a-Service (MaaS) platform, enabling cybercriminals to deploy various malicious payloads, including the notorious LockBit ransomware. This coordinated effort involved multiple countries and resulted in the seizure of key servers and the disruption of command-and-control mechanisms used by the Danabot operators. The takedown is expected to significantly hinder the activities of threat actors relying on this platform, although the threat landscape continues to evolve. Investigations are ongoing to identify and prosecute the individuals behind the Danabot operation.</p>
+ </br>
+  <p><i class="fas fa-globe"></i> <strong>Critical NETGEAR Router Flaw Allows Full Admin Access:</strong> Security researchers have uncovered a critical vulnerability identified as CVE-2025-4978 affecting specific models of NETGEAR DGND3700v2 routers. This high-severity flaw allows unauthenticated attackers who are on the same network as the router to bypass security measures and gain complete administrative control over the device. Exploiting this vulnerability could enable malicious actors to change router configurations, intercept network traffic, or use the compromised device as an entry point for further attacks on connected devices. NETGEAR has reportedly issued a security advisory and is urging users to apply the available firmware updates immediately to mitigate the risk posed by this flaw.</p>
+<br>
+  <p><i class="fas fa-globe"></i> <strong>Apple XNU Kernel Flaw Enables Privilege Escalation:</strong> Apple has recently patched a critical security vulnerability, tracked as CVE-2025-31219, within the XNU kernel, which is the core of macOS and other Apple operating systems. This flaw could be exploited by a local attacker who already has some level of access to a system. Successful exploitation would allow the attacker to elevate their privileges to that of the system administrator or root user. This means they could then perform actions such as installing software, accessing sensitive data, and making system-wide changes. Users are strongly advised to update their Apple devices to the latest software versions to address this security risk and protect their systems from potential exploitation.</p>
+ </br>
+  <p><i class="fas fa-globe"></i> <strong>Hackers Use Fake Ledger Apps to Steal Crypto Seed Phrases:</strong> A concerning new campaign is targeting macOS users who are involved in cryptocurrency. Cybercriminals are distributing malicious software disguised as legitimate Ledger Live applications. Ledger Live is the official application for managing Ledger hardware wallets. These fake applications are designed to trick users into entering their recovery seed phrases, which are critical for accessing their cryptocurrency funds. Once the attackers obtain these seed phrases, they can gain complete control over the victim's crypto assets and transfer them to their own wallets. Users are urged to download Ledger Live only from the official Ledger website and to be extremely cautious about any unsolicited applications or requests for their seed phrases.</p>
+<br>
+  <p><i class="fas fa-globe"></i> <strong>Cybercriminals Using Trusted Google Domains for Malicious Code:</strong> A sophisticated malvertising campaign has been detected where cybercriminals are leveraging the perceived trustworthiness of legitimate Google domains to inject malicious code into e-commerce websites. This is achieved by hosting malicious scripts on Google's cloud services or through other Google-owned platforms. When users visit compromised e-commerce sites, these injected scripts execute and often redirect them to phishing pages designed to steal their login credentials, payment information, or other sensitive data. The use of trusted domains makes these attacks harder to detect as the initial requests appear legitimate. Security experts are advising website owners to carefully monitor their sites for any unauthorized scripts and users to be wary of unexpected redirects while shopping online.</p>
+ </br>
+  <p><i class="fas fa-globe"></i> <strong>Decentralized Crypto Platform Cetus Hit with $223 Million Hack:</strong> Cetus, a decentralized exchange (DEX) operating on the Sui blockchain, has suffered a significant security breach resulting in the theft of approximately $223 million worth of various cryptocurrencies. The details of the exploit are still emerging, but initial reports suggest a vulnerability in the platform's smart contracts was likely the entry point for the attackers. This incident highlights the inherent risks associated with decentralized finance platforms, where security often relies on the integrity of the underlying code. The Cetus team has acknowledged the attack and is reportedly working to understand the full scope of the breach and explore potential recovery options for affected users.</p>
+<br>
+  <p><i class="fas fa-globe"></i> <strong>Critical Vulnerabilities in ABB ASPECT-Enterprise Control Systems:</strong> Industrial control systems (ICS) vendor ABB has recently addressed several critical security vulnerabilities affecting its ASPECT-Enterprise, NEXUS Series, and MATRIX Series products. These systems are widely used in critical infrastructure sectors, making these vulnerabilities particularly concerning. Successful exploitation of these flaws could allow attackers to gain unauthorized access to control systems, potentially leading to disruption of industrial processes, data theft, or even physical damage. ABB has released security advisories and patches to address these issues, urging affected organizations to implement the updates immediately to secure their operational environments.</p>
+ </br>
+  <p><i class="fas fa-globe"></i> <strong>Cloudflare Closes Security Gap That Could Leak Visitor URLs:</strong> Cloudflare, a major content delivery network and cybersecurity company, has patched a request smuggling vulnerability identified as CVE-2025-4366 within its Pingora framework. This flaw could have potentially allowed malicious actors to manipulate HTTP requests in a way that could lead to the leakage of sensitive information, including visitor URLs and potentially other data. While there are no widespread reports of this vulnerability being actively exploited, its discovery in such a widely used infrastructure component underscores the importance of continuous security monitoring and timely patching. Cloudflare has stated that the vulnerability has been mitigated across its network.</p>
+<br>
+  <p><i class="fas fa-globe"></i> <strong>Russian Hacker Group Killnet Returns as a Cyber Mercenary Collective:</strong> The pro-Kremlin hacktivist group known as Killnet, which has been associated with various cyberattacks targeting Western nations, has reportedly announced its transition into a cyber mercenary collective. This new operational model suggests that Killnet will now offer its hacking services for hire, potentially to state-sponsored actors or other entities with specific cyber objectives. This shift raises concerns about the potential for increased and more targeted cyberattacks. Security analysts are closely monitoring Killnet's activities and the implications of this change in their operational strategy for the broader cybersecurity landscape.</p>
+ </br>
+  <p><i class="fas fa-globe"></i> <strong>Europol Operation "Endgame" Targets Ransomware Networks:</strong> A large-scale international law enforcement operation, codenamed "Endgame" and coordinated by Europol, has made significant strides in combating ransomware. The operation reportedly led to the takedown of approximately 300 servers and the seizure of 650 domains that were being used by various ransomware groups for their malicious activities. While specific ransomware gangs targeted were not immediately detailed in this initial report, the scale of the operation suggests a broad effort to disrupt the infrastructure that enables ransomware attacks. This coordinated international approach highlights the ongoing global commitment to tackling the growing threat of ransomware.</p>
+<br>
+  <h2><i class="fas fa-globe"></i> Cyber News in India</h2>
+  <div id="india-news"></div>
+ <br>
+<p><i class="fas fa-globe"></i> <strong>Indian IT Giant Investigates Link to M&amp;S Cyber-attack:</strong>Tata Consultancy Services (TCS), a prominent Indian IT services and consulting company, has launched an internal investigation to determine if its systems or infrastructure played any role in a recent cyber-attack that targeted the British multinational retailer, Marks & Spencer (M&amp;S). While details of the M&amp;S attack are still emerging, the investigation by TCS suggests that the attackers might have potentially leveraged a connection through a third-party vendor, which in this case could be TCS, given their business relationship. The outcome of TCS's investigation will be crucial in understanding the attack vector and implementing necessary security enhancements.</p>
+</br>
+<br>
+<p><i class="fas fa-globe"></i> <strong>India & Russia Eye Collaboration on Nuclear Energy, Cybersecurity:</strong>India and Russia are reportedly engaged in discussions aimed at fostering closer cooperation in several key sectors, including nuclear energy and cybersecurity. In the realm of cybersecurity, the focus of potential collaboration includes the sharing of threat intelligence, joint research and development in security technologies, and the establishment of frameworks to address cyber threats. This potential partnership reflects the increasing global recognition of the interconnectedness of cybersecurity and the need for international collaboration to effectively counter sophisticated cyber threats. The discussions also encompass cooperation in advanced technological domains.</p>
+ </br>
+ <br>
+ <p><i class="fas fa-globe"></i> <strong>Kaspersky Warns of Emerging AI Threats in APAC, Urges Proactive Defense:</strong>Global cybersecurity firm Kaspersky has issued a warning regarding the growing trend of cybercriminals in the Asia-Pacific (APAC) region increasingly leveraging artificial intelligence (AI) in their attacks. This includes the use of AI to create more sophisticated phishing campaigns, develop more evasive malware, and automate certain aspects of cyberattacks. Kaspersky is urging organizations and individuals in the APAC region to adopt a proactive defense posture, which includes implementing advanced security solutions, enhancing cybersecurity awareness training, and staying informed about the latest AI-driven threats to effectively mitigate these emerging risks.</p>
+ <br>
+<p><i class="fas fa-globe"></i> <strong>New e-Zero FIR: Govt Launches Pilot Project Against Cybercrimes:</strong>The Indian government has initiated a pilot project in Delhi introducing the "e-Zero FIR" system aimed at streamlining the process of reporting cybercrimes. Under this system, certain categories of cybercrime complaints will be automatically converted into First Information Reports (FIRs) upon filing online. This is intended to expedite the initial stages of investigation and ensure quicker action against cyber offenders. The pilot project will assess the effectiveness and scalability of this approach before potential nationwide implementation, with the goal of making it easier for victims of cybercrime to seek justice.</p>
+  </br>
+<br>
+<p><i class="fas fa-globe"></i> <strong>India Inc Shoring Up Cybersecurity Spends Amid Spillover Threats:</strong>Following recent geopolitical tensions and a rise in sophisticated cyberattacks globally, Indian corporations, collectively known as "India Inc," are reportedly increasing their investments in cybersecurity measures. This proactive step is driven by concerns about potential spillover effects of international cyber conflicts and the increasing sophistication of cyber threats targeting businesses. The increased spending is focused on areas such as threat detection and response, data protection, and employee training to bolster their overall cyber resilience and protect their digital assets.</p>
+</br>
+  <br>
+<p><i class="fas fa-globe"></i> <strong>Former Andhra Pradesh Cricketer Arrested for Impersonating Telangana CMO Official:</strong>A former cricketer from Andhra Pradesh has been apprehended by law enforcement for allegedly engaging in cyber fraud by impersonating a high-ranking official from the Chief Minister's Office (CMO) of Telangana. The individual has a history of similar offenses. The modus operandi typically involves using the impersonated identity to deceive individuals or organizations for financial gain. This arrest highlights the ongoing issue of online impersonation and the efforts of law enforcement agencies to track down and prosecute cybercriminals involved in such activities.</p>
+</br>
+  <br>
+<p><i class="fas fa-globe"></i> <strong>How India Cut Through the Fog of Cyber War During Operation Sindoor:</strong>Details have emerged regarding India's strategic use of cyber capabilities during "Operation Sindoor." While the specifics of this operation remain somewhat confidential, reports suggest that India employed offensive and defensive cyber measures to achieve its objectives. This indicates a growing maturity in India's cyber warfare capabilities and its integration into national security strategies. The details revealed shed light on how India navigated the complexities of the cyber domain during this particular operation, emphasizing the importance of cybersecurity in modern statecraft.</p>
+ </br>
+ <br>
+<p><i class="fas fa-globe"></i> <strong>CERT-In Warns of Multiple Security Flaws in Google Chrome:</strong>The Indian Computer Emergency Response Team (CERT-In), the national cyber security agency of India, has issued an advisory alerting users to multiple security vulnerabilities that have been identified in the Google Chrome web browser. These flaws could potentially be exploited by attackers to execute arbitrary code, bypass security restrictions, or access sensitive information. CERT-In is strongly recommending that users update their Google Chrome browsers to the latest available version to patch these vulnerabilities and protect themselves from potential exploitation.</p>
+ </br>
+ <br>
+<p><i class="fas fa-globe"></i> <strong>Government Issues Alert About Online Frauds Targeting Pilgrims, Tourists:</strong> In anticipation of upcoming pilgrimage and tourist seasons, the Indian government has issued a nationwide alert regarding the increasing prevalence of online fraud targeting travelers. These scams often involve fake travel booking websites, fraudulent tour packages, and phishing attempts to steal personal and financial information from individuals planning trips. The advisory urges the public to exercise caution when making online bookings, to verify the legitimacy of websites and offers, and to be wary of unsolicited communications requesting personal details or payments.</p>
+ </br>
+            </section>
+
+            <!-- Cyber Attacks Section -->
+            <section class="content hidden" id="cyber-attacks">
+<h2><i class="fas fa-bug" style="color: red;"></i> Most dangerous and Common Cyber Attacks</h2>
+  <ul>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Malware:</strong> Malicious software designed to harm or disrupt computer systems, networks, or devices.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Virus:</strong> A type of malware that attaches itself to executable programs and spreads when the infected program is run.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Worm:</strong> A type of malware that can self-replicate and spread across networks without needing a host file.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Trojan Horse:</strong> Malware disguised as legitimate software to trick users into executing it, often with malicious consequences.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Ransomware:</strong> Malware that encrypts a victim's files and demands a ransom payment to restore access.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Spyware:</strong> Malware that secretly monitors a user's activities and collects personal information without their consent.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Adware:</strong> Software that displays unwanted advertisements, which can sometimes be bundled with malicious code.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Phishing:</strong> A type of social engineering attack where attackers send fraudulent communications, often via email, to trick victims into revealing sensitive information.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Spear Phishing:</strong> A targeted phishing attack aimed at specific individuals or organizations, often using personalized information.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Whaling:</strong> A type of spear phishing specifically targeting high-profile individuals, such as executives.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Baiting:</strong> A social engineering attack that uses a false promise (like a free download or gift) to lure victims into clicking a malicious link or providing information.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Pretexting:</strong> A social engineering attack where an attacker creates a fabricated scenario to manipulate a victim into divulging confidential information.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Denial-of-Service (DoS):</strong> An attack that attempts to make a machine or network resource unavailable to its intended users by disrupting services.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Distributed Denial-of-Service (DDoS):</strong> A DoS attack where the malicious traffic flooding the target comes from multiple compromised computer systems, often a botnet.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Man-in-the-Middle (MitM):</strong> An attack where an attacker intercepts communication between two parties without their knowledge, often to eavesdrop or manipulate the data.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>SQL Injection:</strong> A code injection technique used to attack data-driven applications, in which malicious SQL statements are inserted into an entry field for execution.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Cross-Site Scripting (XSS):</strong> A type of injection attack in which malicious scripts are injected into websites viewed by other users.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Zero-Day Exploit:</strong> An attack that exploits a previously unknown vulnerability in software or hardware for which no patch or fix is yet available.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Brute Force Attack:</strong> A trial-and-error method used to decode encrypted data such as passwords or cryptographic keys, through exhaustive testing of all possible keys.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Credential Stuffing:</strong> An attack that uses lists of compromised usernames and passwords (obtained from data breaches) to try and gain unauthorized access to user accounts on other services.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Insider Threat:</strong> A security risk that originates from within the organization, such as employees, former employees, contractors, or business associates who have inside information concerning the organization's security practices, data, and computer systems.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Advanced Persistent Threat (APT):</strong> A sophisticated, long-term cyberattack targeting a specific entity. APTs often involve multiple attack vectors and aim to exfiltrate sensitive data over an extended period.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Botnet:</strong> A network of private computers infected with malicious software and controlled as a group without the owners' knowledge, often used to launch DDoS attacks or send spam.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Drive-by Download:</strong> The unintentional download of malicious code onto a computer or mobile device when a user visits a compromised website.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Eavesdropping:</strong> The unauthorized interception of private communications, such as emails, phone calls, or instant messages.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>DNS Spoofing (DNS Cache Poisoning):</strong> Corrupting the Domain Name System (DNS) data, so that the victim's computer resolves a domain name to the attacker's malicious IP address.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>ARP Spoofing:</strong> Sending malicious ARP (Address Resolution Protocol) packets to a local area network to associate the attacker's MAC address with the IP address of another host, often the default gateway, causing traffic intended for that host to be sent to the attacker instead.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Session Hijacking:</strong> Exploiting a valid computer session to gain unauthorized access to information or services in a computer system.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Watering Hole Attack:</strong> A targeted attack in which the attacker compromises a website that is frequently visited by the individuals or organization they are trying to target.</li>
+    <li><i class="fas fa-bug" style="color: red;"></i> <strong>Supply Chain Attack:</strong> Targeting an organization by compromising less secure elements in its supply chain, such as vendors or suppliers.</li>
+  </ul>
+
+                <div class="vulnerable-devices">
+                    <h2>Recent Major Attacks on Various companies</h2>
+                    <ul>
+                        <li>2023 - MOVEit Transfer data breach affecting millions</li>
+                        <li>2022 - Uber data breach via contractor compromise</li>
+                        <li>2021 - Colonial Pipeline ransomware attack</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Cyber Defence Section -->
+            <section class="content hidden" id="cyber-defence">
+                <h2><i class="fas fa-shield-alt" style="color: green;"></i> Most Powerful Cyber Defenses Used by Companies</h2>
+<br>
+  <p><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Zero Trust Architecture:</strong> This model operates on the principle of "never trust, always verify." Every user, device, and network flow is authenticated before access is granted. It includes micro-segmentation, Multi-Factor Authentication (MFA), and continuous monitoring to limit breaches.</p>
+</br>
+<br>
+  <p><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Extended Detection and Response (XDR):</strong> XDR collects and correlates data across multiple layers—endpoints, networks, clouds, emails—to detect sophisticated threats with richer context. It also offers analytics and automation for faster incident response.</p>
+</br>
+<br>
+ <p><i class="fas fa-shield-alt" style="color: green;"></i> <strong>AI-Powered Security Tools:</strong> These tools use machine learning to detect anomalies, predict threats, and automate responses. They improve accuracy in threat detection and reduce the workload on human teams.</p>
+</br>
+<br>
+  <p><i class="fas fa-shield-alt" style="color: green;"></i> <strong>SIEM with UEBA:</strong> Security Information and Event Management (SIEM) systems collect logs and alerts. User and Entity Behavior Analytics (UEBA) adds behavior-based detection by learning normal activity and flagging anomalies that may indicate threats.</p>
+</br>
+<br>
+  <p><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Next-Generation Firewalls (NGFWs):</strong> NGFWs provide deep-packet inspection, application control, and intrusion prevention, making them far more effective than traditional firewalls in identifying modern threats.</p>
+</br>
+<br>
+  <p><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Endpoint Detection and Response (EDR):</strong> EDR tools secure individual endpoints. They provide visibility, behavior tracking, automated threat detection, and response to ensure swift action against attacks that antivirus software may miss.</p>
+</br>
+<br>
+  <p><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Cloud Security Platforms:</strong> These platforms ensure cloud-specific security through tools like workload protection, access controls, encryption, and compliance enforcement for organizations moving to the cloud.</p>
+</br>
+<br>
+  <h3><i class="fas fa-shield-alt" style="color: green;"></i> Corporations Providing Powerful Cyber Defenses</h3>
+</br>
+
+  <ul>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Palo Alto Networks:</strong> Known for integrated platforms—next-gen firewalls, Cortex XDR, and Prisma Cloud—offering holistic cybersecurity.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Fortinet:</strong> Offers FortiGate NGFWs, endpoint protection, secure SD-WAN with a focus on automation and integration.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Cisco:</strong> Provides comprehensive security—NGFW (Firepower), Umbrella for cloud, Secure Endpoint, and email security.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>CrowdStrike:</strong> Falcon platform delivers strong EDR, incident response, and intelligence for detecting advanced attacks.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Check Point:</strong> Offers solutions for networks (Quantum), endpoints (Harmony), and cloud (CloudGuard) with threat prevention focus.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Microsoft:</strong> Integrates Azure Security Center and Microsoft Defender across its platforms for threat detection and compliance.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>IBM:</strong> Offers QRadar SIEM, Guardium for data security, and consulting to build cyber resilience in organizations.</li>
+  </ul>
+<br>
+  <h3><i class="fas fa-shield-alt" style="color: green;"></i> Cyber Defense Strategies Used by Other Countries</h3>
+  </br>
+
+  <ul>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>United States:</strong> Uses a multi-agency strategy with CISA and FBI. Focuses on legal frameworks (CFAA, CISPA), public-private collaboration, and proactive threat hunting.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>European Union:</strong> Implements the NIS Directive and GDPR for harmonized regulations. Agencies like ENISA and EC3 support incident response and policy enforcement.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Japan:</strong> Applies strong cyber laws and fosters government-academia-industry partnerships for collaborative defense and awareness campaigns.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Israel:</strong> Known for innovation and military-trained cybersecurity professionals. Focuses on intelligence, startups, and proactive countermeasures.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Finland & United Kingdom:</strong> National centers (NCSC UK, NCSC Finland) lead national efforts. Strategies emphasize education, threat intelligence, and global cooperation.</li>
+  </ul>
+<br>
+  <h3><i class="fas fa-shield-alt" style="color: green;"></i> Powerful Cyber Defense Strategies Used by India</h3>
+</br>
+
+  <ul>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Policy Frameworks:</strong> The National Cyber Security Policy 2013 and IT Act amendments guide India’s legal and strategic defense posture.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Institutional Structures:</strong> CERT-In and NCIIPC are central to threat mitigation, advisory issuance, and national incident response coordination.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Public-Private Partnerships:</strong> Collaboration with industry and academia supports indigenous solutions and intelligence sharing.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Capacity Building:</strong> India is training cybersecurity professionals through educational institutions and skill development programs.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Strengthening Regulatory Frameworks:</strong> The DPDP Act, 2023 mandates data protection and helps modernize India's cyber laws.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Promoting Cyber Awareness:</strong> Campaigns across the country encourage digital hygiene and safer online practices among citizens.</li>
+    <li><i class="fas fa-shield-alt" style="color: green;"></i> <strong>Advanced Security Measures:</strong> Indian companies are deploying Zero Trust, encryption, and threat intelligence solutions.</li>
+  </ul>
+            </section>
+
+            <!-- Vulnerable Devices Section -->
+            <section class="content hidden" id="vulnerable-devices">
+               <h2><i class="fas fa-exclamation-triangle" style="color: red;"></i> Vulnerable Devices and Systems</h2>
+  <ul style="list-style: none; padding-left: 0;">
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Routers:</strong> Often the entry point to a network, routers frequently contain critical vulnerabilities that, if exploited, can grant attackers complete access to connected devices. Outdated firmware, weak default credentials, and exposed management interfaces make them prime targets for botnet recruitment, data interception, and pivoting to internal systems. Their constant connection to the internet increases their exposure.</li>
+    
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>IoT Devices with Default Credentials:</strong> Many Internet of Things (IoT) devices, such as smart cameras, doorbells, and smart home hubs, ship with easily guessable or hardcoded default passwords. Users often fail to change these, creating a significant security flaw. Attackers can easily find these defaults online and compromise vast numbers of devices to form botnets, conduct surveillance, or launch attacks on other targets.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Outdated Smartphones and Tablets:</strong> Mobile devices running older, unsupported operating systems no longer receive crucial security updates. This leaves them vulnerable to a wide range of known exploits that cybercriminals can readily use to gain access to personal data, eavesdrop on communications, or install malware. Users should ideally upgrade or cease using such devices for sensitive tasks.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Network Video Recorders (NVRs) and IP Cameras:</strong> These devices, often used for surveillance, frequently contain security vulnerabilities due to weak firmware, default passwords, and exposed network services. Attackers can exploit these flaws to access live feeds, steal recorded footage, or use the devices as entry points into the network they are connected to, posing privacy and security risks.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Point of Sale (PoS) Systems:</strong> Used in retail environments, PoS systems handle sensitive payment information. Vulnerabilities in their software or hardware can allow attackers to steal credit card details and other personal data. These systems are often targeted with specialized malware designed to scrape memory for payment card numbers during transactions.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Industrial Control Systems (ICS) Components:</strong> Devices like Programmable Logic Controllers (PLCs) and Human-Machine Interfaces (HMIs) in industrial settings are increasingly connected to networks, exposing them to cyber threats. Many legacy ICS components were not designed with security in mind, making them vulnerable to disruption, manipulation, or even physical damage through cyberattacks.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Network-Attached Storage (NAS) Devices:</strong> Used for centralized data storage, NAS devices can be vulnerable if not properly secured. Weak passwords, unpatched software, and exposed services can allow attackers to access, modify, or encrypt stored data, leading to significant data loss or ransomware incidents.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Building Management Systems (BMS):</strong> These systems control various aspects of a building, such as HVAC and lighting. Vulnerabilities can be exploited to disrupt building operations or as a gateway to the broader network. Poorly secured BMS can create unexpected and potentially dangerous situations.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Printers and Multifunction Devices:</strong> Often overlooked, network-connected printers can be vulnerable entry points. They can store sensitive documents, and if not secured, can be used to gain access to the network, intercept print jobs, or launch other attacks.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Medical Devices:</strong> Connected medical devices like infusion pumps and patient monitors can be vulnerable. Exploiting these could have life-threatening consequences, allowing attackers to tamper with device settings or access sensitive patient data.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Smart Televisions:</strong> Modern smart TVs are essentially computers connected to the internet and often have cameras and microphones. Vulnerabilities can allow attackers to spy on users or gain access to other devices on the home network.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>VoIP (Voice over IP) Systems:</strong> Vulnerabilities in VoIP phones and systems can lead to eavesdropping, denial-of-service, or unauthorized access to communication networks.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Universal Gateways:</strong> These devices interconnect different systems, sometimes including both Ethernet and serial communications, making them risky as they can allow for lateral movement within OT networks if compromised.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Historians (OT Data Servers):</strong> Servers dedicated to storing operational process data in industrial environments can be vulnerable and sit at the dangerous interconnection between IT and OT networks.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Physical Access Control Systems:</strong> If these systems are compromised, attackers could gain unauthorized physical access to secure locations.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Intelligent Platform Management Interfaces (IPMI):</strong> These interfaces provide out-of-band management for servers and are plagued with critical vulnerabilities, making them high-risk targets.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Application Delivery Controllers (ADCs):</strong> While meant to secure networks, ADCs are routinely affected by severe vulnerabilities that threat actors often exploit.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Firewalls:</strong> Paradoxically, firewalls themselves can have vulnerabilities that, if exploited, negate their security function.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Domain Controllers:</strong> These are critical points in internal networks, and their compromise can lead to widespread control over the entire domain.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Lab Equipment:</strong> Healthcare and research lab devices connected to networks can have unencrypted data transmission, making them susceptible to data exfiltration.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Healthcare Workstations:</strong> Similar to lab equipment, workstations in healthcare often handle sensitive patient data and can be vulnerable if not properly secured.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Infusion Pump Controllers:</strong> Compromising these IoMT devices could directly harm patients.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Wearable Fitness Devices:</strong> These can collect personal and health data and may have vulnerabilities that could expose this information.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Smart Cars:</strong> Modern vehicles with internet connectivity have become potential targets for cyberattacks, which could affect vehicle functions or user data.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Drones:</strong> Civilian and commercial drones can be vulnerable to hijacking or data theft.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Smart Speakers:</strong> Like smart TVs, these devices have microphones and internet connectivity, posing privacy risks if compromised.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>E-readers:</strong> While seemingly simple, connected e-readers can be entry points if vulnerabilities exist in their software.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Smart Toys:</strong> Toys connected to the internet, especially those with cameras or microphones, can pose privacy and security risks for children.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Outdated Industrial Robots:</strong> Older robots in manufacturing may have security weaknesses that could be exploited to disrupt production.</li>
+
+    <li style="margin-bottom: 18px;"><i class="fas fa-exclamation-triangle" style="color: red; margin-right: 8px;"></i><strong>Building Automation Protocols:</strong> Protocols used in building automation can have vulnerabilities that allow manipulation of building systems.</li>
+  </ul>
+
+            </section>
+
+            <!-- cyber threats -->
+            <section class="content hidden" id="cyber-threats">
+<h2><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> Emerging Cyber Threats</h2>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>AI-Enhanced Malware:</strong> Cybercriminals are increasingly using artificial intelligence to create malware that can evade traditional security measures more effectively. AI can help malware analyze defenses, mutate its code, and target vulnerabilities with greater precision, making it harder to detect and neutralize. This poses a significant challenge as security tools also integrate AI for defense.</p>
+</br>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Deepfake-Powered Social Engineering:</strong> The use of AI-generated realistic fake videos and audio (deepfakes) in social engineering attacks is on the rise. Attackers can impersonate trusted figures like CEOs or colleagues to trick employees into divulging sensitive information or making fraudulent financial transfers, making these attacks more convincing.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Ransomware-as-a-Service (RaaS) Evolution:</strong> RaaS continues to lower the barrier for cybercriminals, with more sophisticated toolkits and affiliate programs emerging. This allows less technically skilled individuals to launch ransomware attacks, leading to a potential increase in the frequency and variety of ransomware incidents targeting organizations of all sizes.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Supply Chain Attacks Targeting Software Dependencies:</strong> Attackers are increasingly targeting vulnerabilities in software supply chains, particularly open-source components and third-party libraries used in software development. By compromising these dependencies, attackers can gain access to a wide range of downstream users and systems, making these attacks highly impactful and difficult to trace.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Quantum Computing Threats to Cryptography:</strong> While still in its early stages, the advancement of quantum computing poses a future threat to current encryption methods. Nation-state actors and sophisticated cybercriminals may be stockpiling encrypted data with the anticipation of decrypting it using quantum computers in the future, necessitating a move towards quantum-resistant cryptography.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Cloud Misconfigurations Leading to Data Breaches:</strong> As organizations increasingly rely on cloud services, misconfigurations of cloud environments (e.g., overly permissive access controls, unsecured storage) remain a significant cause of data breaches. Attackers actively scan for and exploit these misconfigurations to gain unauthorized access to sensitive data stored in the cloud.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks on IoT and OT Devices:</strong> The proliferation of Internet of Things (IoT) devices and Operational Technology (OT) systems in industrial environments expands the attack surface. These devices often have weak security measures, making them attractive targets for cyberattacks that can disrupt operations or even cause physical harm.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Business Email Compromise (BEC) Using AI:</strong> BEC attacks, where fraudsters impersonate executives to trick employees into sending money or sensitive information, are becoming more sophisticated with AI assistance. AI can be used to analyze communication patterns and craft more convincing and contextually relevant phishing emails.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Increased Insider Threats Fueled by Remote Work:</strong> The shift towards remote work has expanded the opportunities for insider threats, whether malicious or accidental. Employees working from less secure home networks can be more susceptible to social engineering, and the risk of data exfiltration by disgruntled insiders remains a concern.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Deep Packet Inspection Evasion Techniques:</strong> Attackers are developing more advanced techniques to evade deep packet inspection (DPI) used by Next-Generation Firewalls and Intrusion Prevention Systems. This includes using sophisticated tunneling and obfuscation methods to conceal malicious traffic within seemingly legitimate communications.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks Leveraging 5G Network Vulnerabilities:</strong> As 5G networks are rolled out, new vulnerabilities specific to this technology are emerging. Attackers may exploit these weaknesses to disrupt mobile communications, intercept data, or launch attacks on connected devices and infrastructure.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Cryptojacking Evolution:</strong> While the hype around cryptocurrency mining has cooled somewhat, cryptojacking (secretly using someone else's resources to mine crypto) persists. Attackers are finding new ways to embed mining scripts, often focusing on cloud resources to maximize profits.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>DNS Tunneling for Data Exfiltration and C2:</strong> DNS tunneling, which uses DNS queries and responses to carry data, remains a stealthy method for attackers to exfiltrate data from compromised networks and establish command and control (C2) channels that can bypass traditional firewalls.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Watering Hole Attacks on Specific Industries:</strong> Attackers are increasingly targeting websites frequently visited by individuals within specific industries (e.g., defense, finance) to compromise their systems. This "watering hole" approach can be more effective than broad phishing campaigns.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Fileless Malware:</strong> This type of malware operates in memory, making it harder to detect as it doesn't rely on writing malicious files to disk. Attackers are increasingly using fileless techniques to evade traditional antivirus solutions.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks on AI/ML Systems Themselves:</strong> As AI and Machine Learning become more integrated into critical systems, these systems themselves are becoming targets. Attacks can aim to poison training data, manipulate model outputs, or steal proprietary AI algorithms.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Geopolitical Tensions Driving State-Sponsored Attacks:</strong> Rising global geopolitical tensions are leading to an increase in state-sponsored cyberattacks targeting critical infrastructure, government entities, and intellectual property of rival nations.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Mobile Device Vulnerabilities Exploitation:</strong> With the widespread use of mobile devices for work and personal tasks, attackers are increasingly targeting vulnerabilities in mobile operating systems and applications to gain access to sensitive data.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Increased Sophistication of Phishing Kits:</strong> Phishing kits are becoming more advanced and easier to use, allowing even novice attackers to create highly convincing phishing campaigns that are difficult for users to distinguish from legitimate communications.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Abuse of Legitimate Cloud Services for Malicious Purposes:</strong> Attackers are leveraging legitimate cloud services (e.g., storage, computing) to host malware, conduct phishing campaigns, and exfiltrate stolen data, often blending in with normal cloud traffic.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks Targeting Edge Computing Environments:</strong> As edge computing expands, securing these distributed environments becomes crucial. Attackers may target edge devices and networks to disrupt operations or gain access to data processed at the edge.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Exploitation of Zero-Day Vulnerabilities:</strong> Attackers continue to seek and exploit previously unknown vulnerabilities (zero-days) in widely used software and hardware, often leading to significant breaches before patches are available.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks on Industrial Control Systems (ICS) with OT-Specific Malware:</strong> Targeted malware designed specifically for OT environments in industrial control systems poses a significant threat to critical infrastructure, with the potential for physical consequences.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Misinformation and Disinformation Campaigns Using AI:</strong> AI is being used to create and spread increasingly sophisticated misinformation and disinformation online, which can be used for social engineering, political manipulation, or to damage the reputation of organizations.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks Targeting APIs:</strong> As applications become more interconnected through APIs, these interfaces are becoming attractive targets for attackers seeking to gain unauthorized access to data and functionality.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Browser-Based Attacks:</strong> Attackers are increasingly using browser extensions and vulnerabilities to compromise systems, steal data, or conduct malicious activities directly within the user's browser.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks on Decentralized Finance (DeFi) Platforms:</strong> With the growth of DeFi, these platforms are becoming lucrative targets for hackers exploiting vulnerabilities in smart contracts and protocols, often resulting in significant financial losses.</p>
+<br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Evasion of Multi-Factor Authentication (MFA):</strong> While MFA adds a layer of security, attackers are developing techniques to bypass it, such as MFA fatigue attacks or exploiting vulnerabilities in MFA implementations.</p>
+</br>
+  <p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Attacks Leveraging Weak Encryption or Cryptographic Implementation:</strong> Weak or improperly implemented encryption can be exploited by attackers to decrypt sensitive data, highlighting the importance of strong cryptographic practices.</p>
+</br>
+  <br>
+<p><i class="fas fa-exclamation-triangle" style="color: #fd8a20;"></i> <strong>Hybrid Warfare Cyber Components:</strong> Cyberattacks are increasingly integrated into hybrid warfare strategies, used in conjunction with conventional and other non-kinetic tactics to achieve strategic objectives.</p>
+</br>
+            </section>
+			<!-- cyber-awareness-->
+			
+            <section class="content hidden" id="cyber-awareness">
+                <h2><i class="fas fa-brain" style="color: pink;"></i> Cyber Safety Tips</h2>
+  <ul style="list-style: none; padding-left: 0;">
+    <li style="margin-bottom: 20px;">
+      <i class="fas fa-brain" style="color: pink; margin-right: 8px;"></i>
+      <strong>Recognize and Avoid Phishing Attempts:</strong> Be extremely cautious of unsolicited emails, messages, or calls asking for personal information, login credentials, or financial details. Phishing attacks often impersonate legitimate organizations. Always verify the sender's authenticity through official channels before clicking links or providing any information. Look for inconsistencies in email addresses, grammar, and website URLs. Hover your mouse over links to see the actual destination before clicking. If something seems suspicious, it likely is.
+    </li>
+    <li style="margin-bottom: 20px;">
+      <i class="fas fa-brain" style="color: pink; margin-right: 8px;"></i>
+      <strong>Use Strong, Unique Passwords and a Password Manager:</strong> Create complex passwords that combine uppercase and lowercase letters, numbers, and symbols. Avoid using personal information or common words. Crucially, use a unique password for each online account. Remembering many strong passwords can be challenging, so consider using a reputable password manager. These tools securely store your passwords and can generate strong ones for you, only requiring you to remember one master password.
+    </li>
+    <li style="margin-bottom: 20px;">
+      <i class="fas fa-brain" style="color: pink; margin-right: 8px;"></i>
+      <strong>Enable Multi-Factor Authentication (MFA) Wherever Possible:</strong> MFA adds an extra layer of security to your accounts by requiring a second verification step in addition to your password. This could be a code sent to your phone, a biometric scan, or a security key. Even if a cybercriminal manages to obtain your password, they will still need this second factor to gain access. Enabling MFA significantly reduces the risk of unauthorized account access across your online services.
+    </li>
+    <li style="margin-bottom: 20px;">
+      <i class="fas fa-brain" style="color: pink; margin-right: 8px;"></i>
+      <strong>Keep Your Software Updated Regularly:</strong> Software updates often include security patches that address known vulnerabilities. Failing to update your operating system, web browsers, applications, and antivirus software leaves you susceptible to exploitation by cybercriminals who target these weaknesses. Enable automatic updates whenever possible to ensure you have the latest security protections. Promptly install updates when prompted to safeguard your devices and data.
+    </li>
+    <li style="margin-bottom: 20px;">
+      <i class="fas fa-brain" style="color: pink; margin-right: 8px;"></i>
+      <strong>Be Cautious About Public Wi-Fi:</strong> Public Wi-Fi networks are often unsecured, making it easier for cybercriminals to intercept your data. Avoid accessing sensitive information like banking details or logging into important accounts while connected to public Wi-Fi. If you must use public Wi-Fi, consider using a Virtual Private Network (VPN) to encrypt your internet traffic and enhance your privacy and security.
+    </li>
+    <li style="margin-bottom: 20px;">
+      <i class="fas fa-brain" style="color: pink; margin-right: 8px;"></i>
+      <strong>Secure Your Home Network and IoT Devices:</strong> Change the default password of your Wi-Fi router to a strong, unique one. Enable WPA3 encryption for better security. For Internet of Things (IoT) devices like smart cameras and thermostats, also change their default passwords and keep their firmware updated. These devices can be entry points for attackers into your home network if not properly secured. Consider segmenting your home network to isolate IoT devices.
+    </li>
+    <li style="margin-bottom: 20px;">
+      <i class="fas fa-brain" style="color: pink; margin-right: 8px;"></i>
+      <strong>Back Up Your Important Data Regularly:</strong> Regularly backing up your important files to an external hard drive, a separate cloud service, or another secure location is crucial. In the event of a ransomware attack, hardware failure, or accidental deletion, you can restore your data without having to pay a ransom or suffer permanent data loss. Implement a backup schedule that suits your needs and periodically test your backups to ensure they are working correctly.
+    </li>
+  </ul>
+            </section>
+			
+			<!--vulnerable-places-->
+			
+            <section class="content hidden" id="vulnerable-places">
+<h2><i class="fas fa-exclamation-triangle" style="color: #f39c12;"></i>Vulnerable-Places Across The World </h2>
+  <ul style="list-style: none; padding-left: 0;">
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Countries with High Internet Penetration and Lower Cybersecurity Maturity:</strong> Nations rapidly adopting digital technologies without equally robust cybersecurity infrastructure often become targets. This can include regions in Southeast Asia, parts of Africa, and Latin America, where the increasing online presence creates more opportunities for cybercriminals to exploit less protected systems and users.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Regions Experiencing Geopolitical Conflict:</strong> Areas with ongoing geopolitical tensions, such as Ukraine, the Middle East, and regions with state-sponsored cyber activities, are highly vulnerable. Cyberattacks are frequently used as a tool in these conflicts, targeting critical infrastructure, government entities, and civilian populations to cause disruption and gain strategic advantages.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Countries Identified as Cybercrime Hubs:</strong> Certain nations have unfortunately become known as epicenters for cybercriminal activities. According to various reports, Russia, Ukraine, China, Nigeria, and Romania have frequently appeared as significant sources of cybercrime, indicating a high level of malicious activity originating from these regions, making them inherently vulnerable due to the sheer volume of threats.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Sectors with Critical Infrastructure:</strong> Industries like energy, healthcare, finance, and transportation are particularly vulnerable due to the high impact a successful cyberattack can have. Disruptions to these sectors can lead to significant economic damage, endanger public safety, and even pose national security risks, making them prime targets for both state-sponsored actors and cybercriminal groups.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Countries with Legacy Technology and Underfunded Cybersecurity:</strong> Nations and organizations still relying on outdated IT systems often have significant vulnerabilities. The difficulty in patching or upgrading these systems, coupled with potential underinvestment in modern cybersecurity measures, creates a fertile ground for exploitation by attackers using both known and novel techniques.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Regions with Low Levels of Cyber Awareness:</strong> Areas where digital literacy and cyber awareness are low see higher success rates for social engineering attacks like phishing. Users in these regions may be less likely to recognize and avoid scams, making them and the systems they use more vulnerable to compromise.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Countries with Weak Data Protection Laws:</strong> Regions with lax data protection and privacy laws can be more vulnerable to data breaches and cyber theft. The lack of strong legal frameworks and enforcement mechanisms can make these areas attractive to cybercriminals seeking to exploit personal and sensitive information.
+    </li>
+
+    <!-- TECHNICAL DIMENSIONS -->
+    <li style="margin-top: 30px; margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Vulnerabilities in Software and Hardware:</strong> A constant source of vulnerability lies within the software and hardware we use daily. Bugs, design flaws, and oversights can create entry points for attackers. These vulnerabilities are constantly being discovered and exploited. Software vendors release patches to fix these issues, but the lag between discovery, patching, and user implementation leaves a window of opportunity for cybercriminals. Older, unsupported software is particularly risky as it no longer receives these critical security updates.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Human Factors as Vulnerabilities:</strong> Often, the weakest link in the security chain is the human element. Social engineering tactics like phishing, pretexting, and baiting prey on human psychology to trick individuals into divulging sensitive information or performing actions that compromise security. Lack of awareness, carelessness, or even simple mistakes by users can open doors for attackers, regardless of the technical defenses in place.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Vulnerabilities in Network Infrastructure:</strong> The underlying network infrastructure, including routers, switches, and communication protocols, can also contain vulnerabilities. Misconfigurations, outdated firmware, or inherent flaws in network protocols can be exploited to intercept traffic, gain unauthorized access, or disrupt services. The complexity of modern networks increases the potential for such weaknesses to exist and be overlooked.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Cloud Computing Vulnerabilities:</strong> While the cloud offers many security benefits, it also introduces new areas of vulnerability. Misconfigurations of cloud resources (storage buckets, access controls), insecure APIs, and shared tenancy risks can expose data and systems. Understanding and correctly configuring cloud security settings is crucial to avoid these pitfalls.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Mobile Device Vulnerabilities:</strong> Our reliance on smartphones and tablets makes them attractive targets. Vulnerabilities in mobile operating systems, malicious apps, and insecure mobile browsing habits can lead to data theft, malware infection, and unauthorized access to personal and corporate information. Keeping mobile devices updated and being cautious about app permissions are vital.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Vulnerabilities in Operational Technology (OT):</strong> Industrial control systems (ICS) and OT environments, which manage critical infrastructure, often contain legacy systems with known vulnerabilities. The convergence of IT and OT networks also creates new attack pathways. Securing these environments is paramount due to the potential for real-world consequences from cyberattacks.
+    </li>
+
+    <li style="margin-bottom: 18px;">
+      <i class="fas fa-exclamation-triangle" style="color: #f39c12; margin-right: 8px;"></i>
+      <strong>Vulnerabilities in Artificial Intelligence (AI) and Machine Learning (ML) Systems:</strong> As AI and ML become more integrated, new vulnerabilities specific to these technologies are emerging. These include adversarial attacks (manipulating input data to fool AI models), data poisoning, and model theft. Securing AI/ML systems requires a different set of considerations than traditional IT systems.
+    </li>
+  </ul>
+</section>
+			
+			<!--safety-tips-->
+			
+            <section class="content hidden" id="safety-tips">
+<h2><i class="fas fa-shield-halved" style="color: green;"></i> Cyber Safety Tips</h2>
+  
+  <br><p><i class="fas fa-shield" style="color: green;"></i> <strong>Implement Strong, Unique Passwords and a Robust Password Manager:</strong> The foundation of your online security rests on the strength and uniqueness of your passwords. Avoid easily guessable combinations, personal information, or common words. Crucially, use a different, strong password for every online account you possess. To manage this effectively, adopt a reputable password manager. These tools not only securely store your complex passwords but can also generate new, robust ones, simplifying the process while significantly enhancing your security posture by mitigating the risk of credential stuffing attacks.</p>
+</br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Enable Multi-Factor Authentication (MFA) on All Available Accounts:</strong> Multi-Factor Authentication provides an indispensable additional layer of security beyond just your password. By requiring a second verification factor – such as a code from your phone, a biometric scan, or a security key – you drastically reduce the risk of unauthorized access, even if your password is compromised. Prioritize enabling MFA on your email, banking, social media, and any other critical accounts. This simple step can effectively block a vast majority of attempted intrusions, acting as a powerful deterrent against cybercriminals.</p>
+<br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Practice Extreme Caution with Links and Attachments:</strong> Cybercriminals frequently use deceptive emails and messages containing malicious links or attachments to distribute malware or conduct phishing attacks. Never click on links or download attachments from unknown or suspicious senders. Even if the sender appears familiar, exercise caution and verify the legitimacy of the communication through an alternative method, such as directly contacting the purported sender via phone or a known official email address. Hover your cursor over links to preview their destination before clicking.</p>
+</br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Keep All Your Software and Operating Systems Up to Date:</strong> Software updates are not just about new features; they often include critical security patches that address newly discovered vulnerabilities. Failing to install these updates leaves your devices and data susceptible to exploitation by attackers who are aware of these weaknesses. Enable automatic updates whenever possible for your operating system, web browsers, applications, and security software. Promptly install any pending updates to ensure you benefit from the latest security protections and minimize your attack surface.</p>
+<br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Be Vigilant on Public Wi-Fi and Consider Using a VPN:</strong> Public Wi-Fi networks, while convenient, are often unsecured, making your online activity potentially visible to malicious actors on the same network. Avoid accessing sensitive information, such as banking details or logging into critical accounts, while connected to public Wi-Fi. For enhanced security and privacy, consider using a Virtual Private Network (VPN). A VPN encrypts your internet traffic, creating a secure tunnel that protects your data from eavesdropping, especially on untrusted networks.</p>
+</br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Secure Your Home Network and Connected Devices Meticulously:</strong> Your home network is the gateway for all your connected devices. Secure it by changing the default password of your Wi-Fi router to a strong, unique one and enabling WPA3 encryption. For all smart devices (IoT), such as cameras, speakers, and appliances, change their default passwords immediately and keep their firmware updated. These devices can be vulnerable entry points for attackers to your network and could compromise your privacy and security. Consider network segmentation to isolate IoT devices.</p>
+<br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Back Up Your Important Data Regularly and Verify Restorations:</strong> Data loss can occur due to various reasons, including cyberattacks like ransomware, hardware failures, or accidental deletions. Establish a regular backup routine for your important files to an external hard drive, a separate cloud service, or another secure location. Crucially, periodically test the restoration process to ensure your backups are viable and you can recover your data when needed. This practice can save you from significant distress and potential financial losses.</p>
+</br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Limit the Information You Share Online and Be Mindful of Your Digital Footprint:</strong> Be conscious of the personal information you share on social media and other online platforms. Cybercriminals can use this information for social engineering attacks or identity theft. Adjust your privacy settings to limit who can see your posts and avoid oversharing sensitive details like your address, phone number, or travel plans publicly. Remember that once information is online, it can be difficult to completely remove.</p>
+<br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Install and Maintain Reputable Security Software:</strong> Employ a comprehensive security suite that includes antivirus, anti-malware, and a firewall. Ensure this software is always running and automatically updated to protect your devices from known and emerging threats. While not a silver bullet, reputable security software provides a crucial layer of defense by detecting and blocking malicious software before it can cause harm to your system and data. Regularly review its logs and ensure it's functioning correctly.</p>
+</br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Be Wary of Scams and Unsolicited Offers:</strong> Cybercriminals often use enticing but fake offers, urgent warnings, or sob stories to trick you into taking actions that compromise your security. Be skeptical of unsolicited communications promising prizes, requiring immediate action, or asking for personal information. If an offer seems too good to be true, it likely is. Independently verify the legitimacy of such claims through official sources before taking any steps.</p>
+<br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Educate Yourself and Stay Informed About Cyber Threats:</strong> The cyber threat landscape is constantly evolving. Make an effort to stay informed about the latest scams, attack techniques, and security best practices. Follow reputable cybersecurity news sources and be proactive in learning how to protect yourself and your devices. Awareness is a powerful defense against many common cyber threats. Share this knowledge with family and friends to create a more secure digital environment for everyone.</p>
+</br>
+  <p><i class="fas fa-shield" style="color: green;"></i> <strong>Practice the Principle of Least Privilege:</strong> On your devices and within your accounts, only grant the necessary permissions required for a user or application to perform its intended tasks. Avoid running with administrative privileges unless absolutely necessary, as this limits the potential damage if an account or application is compromised. Regularly review the permissions granted to apps and users and revoke any that are no longer needed. This principle helps contain the impact of a security breach.</p>
+            </section>
+			
+			<!--others-->
+			
+            <section class="content hidden" id="others">
+                <h2 style="margin-bottom: 20px;"><i class="fas fa-globe" style="color: #007BFF;"></i> Global Cyberattack Landscape (2023)</h2>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-flag" style="color: darkred;"></i> Top Countries Affected by Cyberattacks</h3>
+  <div style="overflow-x:auto; margin-bottom: 20px;">
+    <table style="width:100%; border-collapse: collapse; text-align: left;">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Country</th>
+          <th>Percentage of Global Attacks</th>
+          <th>Notable Attack Types</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>India</td><td>13.7%</td><td>Phishing, Malware, Data Breaches</td></tr>
+        <tr><td>2</td><td>United States</td><td>9.6%</td><td>Ransomware, Phishing, Espionage</td></tr>
+        <tr><td>3</td><td>Indonesia</td><td>9.3%</td><td>Malware, Hacktivism</td></tr>
+        <tr><td>4</td><td>China</td><td>4.5%</td><td>State-Sponsored Attacks, Data Breaches</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Source:</strong> The Times of India</p>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-lock" style="color: crimson;"></i> Ransomware Incidents</h3>
+  <p style="margin-bottom: 15px;">In 2023, over <strong>6,670 ransomware attacks</strong> were recorded across 117 countries, marking a <strong>73% increase</strong> from the previous year.</p>
+  <p><strong>Source:</strong> The Record from Recorded Future</p>
+
+  <h2 style="margin-top: 40px;"><i class="fas fa-shield-alt" style="color: green;"></i> Cybersecurity Landscape in India (2023)</h2>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-chart-line" style="color: teal;"></i> Overall Statistics</h3>
+  <ul>
+    <li>India experienced over <strong>102.8 million cyberattacks</strong> in Q2 2023 alone. <em>(The Times of India)</em></li>
+    <li>India ranked <strong>third globally for phishing attacks</strong> with over <strong>79 million incidents</strong>. <em>(www.ndtv.com)</em></li>
+  </ul>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-bug" style="color: red;"></i> Types of Cyberattacks</h3>
+  <div style="overflow-x:auto; margin-bottom: 20px;">
+    <table style="width:100%; border-collapse: collapse; text-align: left;">
+      <thead>
+        <tr>
+          <th>Attack Type</th>
+          <th>Percentage of Total Attacks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Trojans</td><td>37.8%</td></tr>
+        <tr><td>Infectors</td><td>35.15%</td></tr>
+        <tr><td>Worms</td><td>9.80%</td></tr>
+        <tr><td>Potentially Unwanted Apps</td><td>7.03%</td></tr>
+        <tr><td>Exploits</td><td>6.90%</td></tr>
+        <tr><td>Cryptojacking</td><td>2.12%</td></tr>
+        <tr><td>Adware</td><td>0.84%</td></tr>
+        <tr><td>Ransomware</td><td>0.32%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Source:</strong> The Times of India</p>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-map-marker-alt" style="color: orange;"></i> Most Affected Cities</h3>
+  <div style="overflow-x:auto; margin-bottom: 20px;">
+    <table style="width:100%; border-collapse: collapse; text-align: left;">
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Number of Attacks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Kolkata</td><td>7.08 million</td></tr>
+        <tr><td>Mumbai</td><td>7.00 million</td></tr>
+        <tr><td>Pune</td><td>5.69 million</td></tr>
+        <tr><td>New Delhi</td><td>5.56 million</td></tr>
+        <tr><td>Bengaluru</td><td>4.86 million</td></tr>
+        <tr><td>Surat</td><td>4.16 million</td></tr>
+        <tr><td>Hyderabad</td><td>3.50 million</td></tr>
+        <tr><td>Ahmedabad</td><td>3.45 million</td></tr>
+        <tr><td>Chennai</td><td>2.36 million</td></tr>
+        <tr><td>Gurugram</td><td>2.01 million</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Source:</strong> The Times of India</p>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-industry" style="color: navy;"></i> Sector-Specific Impact</h3>
+  <ul>
+    <li>The <strong>technology sector</strong> faced nearly <strong>33% of all phishing attacks</strong>. <em>(www.ndtv.com)</em></li>
+    <li>The <strong>finance and insurance sector</strong> experienced a <strong>393% increase in phishing attempts</strong>. <em>(www.ndtv.com)</em></li>
+    <li><strong>Manufacturing, government, and banking sectors</strong> were hit hard by malware like COIMINER, MIMIKATZ, and POWLOAD. <em>(The Hindu Business Line)</em></li>
+  </ul>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-database" style="color: darkred;"></i> Notable Data Breaches</h3>
+  <ul>
+    <li>October 2023: <strong>Indian Council of Medical Research (ICMR)</strong> – 815 million personal records compromised (Aadhaar, passport data). <em>(ironwoodcyber.com, India Today)</em></li>
+    <li><strong>Redcliffe Labs</strong> – Over 12 million medical records exposed due to unprotected database. <em>(ironwoodcyber.com)</em></li>
+  </ul>
+
+  <h3 style="margin-top: 25px;"><i class="fas fa-map"></i> State-Specific Incidents</h3>
+  <ul>
+    <li><strong>Telangana:</strong> Hawk Eye app breach exposed 200,000 citizens' data. <em>(The Cyber Express)</em></li>
+    <li><strong>Tamil Nadu:</strong> Facial Recognition Software portal compromised, affecting over 6 million records. <em>(The Cyber Express)</em></li>
+  </ul>
+            </section>
+
+            <!-- Useful Links Section (Always Visible) -->
+            <section class="useful-links">
+                <h2>USEFUL LINKS</h2>
+                <div class="links-container">
+                    <div class="link-item">
+                        <i class="fas fa-globe"></i>
+                        <a href="https://www.cybercrime.gov.in/" target="_blank">Indian Cyber Crime Coordination Centre (I4C)</a>
+                    </div>
+                    <div class="link-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <a href="https://www.cert-in.org.in/" target="_blank">Indian Computer Emergency Response Team (CERT-In)</a>
+                    </div>
+                    <div class="link-item">
+                        <i class="fas fa-phone"></i>
+                        <span>National Cyber Crime Reporting Portal: 1930</span>
+                    </div>
+                    <div class="link-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Women Helpline (All India): 181</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chatbot Box (Hidden by Default) -->
+    <div id="chatbot-box" class="hidden">
+        <div id="chatbot-header">
+            <span><i class="fas fa-robot"></i> CYBGLO Chatbot</span>
+            <span id="chatbot-close" onclick="closeChatbot()">&times;</span>
+        </div>
+        <div id="chatbot-body">
+            <p>Hello! I'm here to help you with cyber security topics. Select a topic below:</p>
+            <div id="chatbot-buttons">
+                <button data-section="home">Home</button>
+                <button data-section="cyber-laws">Cyber Laws</button>
+                <button data-section="cyber-news">Cyber News</button>
+                <button data-section="cyber-attacks">Cyber Attacks</button>
+                <button data-section="cyber-defence">Cyber Defence</button>
+                <button data-section="cyber-threats">Cyber Threats</button>
+                <button data-section="cyber-awareness">Cyber Awareness</button>
+                <button data-section="vulnerable-places">Vulnerable Places</button>
+                <button data-section="vulnerable-devices">Vulnerable Devices</button>
+                <button data-section="safety-tips">Safety Tips</button>
+                <button data-section="others">Others</button>
+            </div>
+            <div id="chatbot-response"></div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 CYBGLO. All Rights Reserved.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/s-harshavardhan-673843260" target="_blank" title="LinkedIn Profile" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:harshavardhanmh14@gmail.com" title="Email Us" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="visitor-counter">
+                    Visitors: <span id="visitorCount">1</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// Global variables
+let isLoggedIn = false;
+let userEmail = '';
+
+// Check login status on page load
+document.addEventListener('DOMContentLoaded', function() {
+    checkLoginStatus();
+    initializeApp();
+});
+
+// Check if user is logged in
+function checkLoginStatus() {
+    const loginStatus = localStorage.getItem('cybglo-loggedin');
+    const savedEmail = localStorage.getItem('cybglo-user-email');
+    
+    if (loginStatus === 'true' && savedEmail) {
+        isLoggedIn = true;
+        userEmail = savedEmail;
+        showLoggedInState();
+    } else {
+        isLoggedIn = false;
+        showGuestState();
+    }
+}
+
+// Show logged-in user state
+function showLoggedInState() {
+    // Update user status
+    const userStatus = document.getElementById('user-status');
+    const statusText = document.getElementById('status-text');
+    if (userStatus && statusText) {
+        userStatus.className = 'user-status logged-in';
+        statusText.innerHTML = `<i class="fas fa-user-check"></i> ${userEmail}`;
+
+        // Show logout button, hide auth buttons
+        const logoutBtn = document.getElementById('logout-btn');
+        const authButtons = document.getElementById('auth-buttons');
+        if (logoutBtn) logoutBtn.classList.add('show');
+        if (authButtons) authButtons.style.display = 'none';
+
+        // Show chatbot icon
+        const chatbotIcon = document.getElementById('chatbot-icon');
+        if (chatbotIcon) {
+            chatbotIcon.classList.add('show');
+            chatbotIcon.title = 'Chat with CYBGLO Bot';
+        }
+    }
+}
+
+// Show guest user state  
+function showGuestState() {
+    // Update user status
+    const userStatus = document.getElementById('user-status');
+    const statusText = document.getElementById('status-text');
+    if (userStatus && statusText) {
+        userStatus.className = 'user-status guest';
+        statusText.innerHTML = '<i class="fas fa-user"></i> Guest User';
+
+        // Hide logout button, show auth buttons
+        const logoutBtn = document.getElementById('logout-btn');
+        const authButtons = document.getElementById('auth-buttons');
+        if (logoutBtn) logoutBtn.classList.remove('show');
+        if (authButtons) authButtons.style.display = 'block';
+
+        // Hide chatbot icon
+        const chatbotIcon = document.getElementById('chatbot-icon');
+        const chatbotBox = document.getElementById('chatbot-box');
+        if (chatbotIcon) chatbotIcon.classList.remove('show');
+        if (chatbotBox) chatbotBox.classList.add('hidden');
+    }
+}
+
+// Initialize app components
+function initializeApp() {
+    // Visitor Counter
+    let count = localStorage.getItem('visitorCount') || 0;
+    count = parseInt(count) + 1;
+    localStorage.setItem('visitorCount', count);
+    const visitorCountEl = document.getElementById('visitorCount');
+    if (visitorCountEl) visitorCountEl.textContent = count;
+
+    // Navigation functionality
+    initializeNavigation();
+    
+    // Chatbot functionality (only if logged in)
+    if (isLoggedIn) {
+        initializeChatbot();
+    }
+
+    // Country dropdown
+    initializeCountryDropdown();
+
+    // Back to top button
+    initializeBackToTop();
+}
+
+// Navigation system
+function initializeNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            document.querySelectorAll('.content').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            const sectionId = this.getAttribute('data-section');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) targetSection.classList.remove('hidden');
+
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            this.classList.add('active');
+
+            const navLinksContainer = document.querySelector('.nav-links');
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            if (navLinksContainer) navLinksContainer.classList.remove('active');
+            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    // Mobile Navigation Toggle
+    const mobileToggle = document.querySelector('.mobile-nav-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+
+    if (mobileToggle && navLinksContainer) {
+        mobileToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-container') && !e.target.closest('.mobile-nav-toggle')) {
+                navLinksContainer.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+}
+
+// Chatbot system (only for logged-in users)
+function initializeChatbot() {
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotBox = document.getElementById('chatbot-box');
+    const chatbotButtons = document.querySelectorAll('#chatbot-buttons button');
+    const chatbotResponse = document.getElementById('chatbot-response');
+
+    const chatbotData = {
+        "home": "Welcome to CYBGLO! As a registered user, you have access to comprehensive cyber security resources. Learn why cyber laws and staying updated with cyber news are crucial for digital safety.",
+        "cyber-laws": "Cyber Laws in India include the IT Act 2000 with key sections: 66 (Hacking), 66C (Identity theft), 66D (Cheating by personation), 66E (Privacy violation), and 67 (Obscene material).",
+        "cyber-news": "Latest Cyber News: Ransomware attacks increased by 150% in Q1 2024. New phishing techniques are bypassing multi-factor authentication. Stay updated with the latest threats.",
+        "cyber-attacks": "Common Cyber Attacks include Phishing, Malware, DDoS attacks, Man-in-the-Middle attacks, SQL Injection, and Zero-Day exploits. Each requires different prevention strategies.",
+        "cyber-defence": "Cyber Defence Strategies: Implement firewalls, use updated antivirus software, enable encryption, set up multi-factor authentication, apply security patches, and conduct employee training.",
+        "cyber-threats": "Emerging Cyber Threats include AI-powered attacks, IoT device exploits, supply chain attacks, and advanced persistent threats (APTs). Stay vigilant against new attack vectors.",
+        "cyber-awareness": "Cyber Awareness: Regular training programs, security workshops, phishing simulation exercises, and keeping updated with latest security practices are essential.",
+        "vulnerable-places": "Vulnerable Digital Places: Public WiFi networks, unpatched servers, exposed databases, unsecured cloud storage, and social media platforms require extra caution.",
+        "vulnerable-devices": "Most Vulnerable Devices: IoT devices, outdated mobile phones, unsecured routers, medical devices, and industrial control systems need enhanced security measures.",
+        "safety-tips": "Cyber Safety Tips: Use strong, unique passwords, enable two-factor authentication, keep software updated, regular backups, be cautious with emails, and use VPN on public networks.",
+        "others": "Additional Resources: Explore cybersecurity tools, international compliance standards, incident response procedures, and specialized training programs."
+    };
+
+    // Chatbot icon click handler
+    if (chatbotIcon) {
+        chatbotIcon.addEventListener('click', function() {
+            if (isLoggedIn) {
+                if (chatbotBox) chatbotBox.classList.toggle('hidden');
+            } else {
+                alert('Please login to access the chatbot feature.');
+                showForm('login');
+            }
+        });
+    }
+
+    // Chatbot button handlers
+    chatbotButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const key = btn.getAttribute('data-section');
+            const reply = chatbotData[key] || "I don't have information about that topic. Please contact support for more details.";
+            typeText(reply);
+        });
+    });
+
+    // Typing animation for chatbot responses
+    function typeText(text) {
+        if (!chatbotResponse) return;
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'bot-avatar';
+        avatar.innerHTML = '🤖';
+        
+        const span = document.createElement('span');
+        span.textContent = "";
+        
+        bubble.appendChild(avatar);
+        bubble.appendChild(span);
+        chatbotResponse.appendChild(bubble);
+        chatbotResponse.scrollTop = chatbotResponse.scrollHeight;
+
+        let i = 0;
+        const fullText = text + " For more detailed information, please visit the respective section.";
+        const interval = setInterval(() => {
+            span.textContent = fullText.slice(0, i + 1);
+            i++;
+            if (i === fullText.length) {
+                clearInterval(interval);
+            }
+            chatbotResponse.scrollTop = chatbotResponse.scrollHeight;
+        }, 30);
+    }
+}
+
+// Close chatbot
+function closeChatbot() {
+    const chatbotBox = document.getElementById('chatbot-box');
+    if (chatbotBox) chatbotBox.classList.add('hidden');
+}
+
+// Country dropdown initialization
+function initializeCountryDropdown() {
+    const countries = ["Afghanistan", "Albania", "Algeria", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahrain", "Bangladesh", "Belarus", "Belgium", "Bolivia", "Bosnia and Herzegovina", "Brazil", "Bulgaria", "Cambodia", "Canada", "Chile", "China", "Colombia", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Estonia", "Ethiopia", "Finland", "France", "Georgia", "Germany", "Ghana", "Greece", "Guatemala", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Latvia", "Lebanon", "Lithuania", "Luxembourg", "Malaysia", "Mexico", "Morocco", "Netherlands", "New Zealand", "Nicaragua", "Nigeria", "Norway", "Pakistan", "Panama", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Saudi Arabia", "Serbia", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Thailand", "Tunisia", "Turkey", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Venezuela", "Vietnam"];
+    
+    const dropdown = document.getElementById('signup-country');
+    if (dropdown) {
+        countries.forEach(country => {
+            const option = document.createElement('option');
+            option.textContent = country;
+            option.value = country;
+            dropdown.appendChild(option);
+        });
+    }
+}
+
+// Back to top button
+function initializeBackToTop() {
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    if (backToTopButton) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+}
+
+// Authentication System
+function showForm(type) {
+    console.log('showForm called with type:', type); // Debug log
+    
+    const wrapper = document.getElementById('auth-wrapper');
+    if (!wrapper) {
+        console.error('auth-wrapper element not found!');
+        return;
+    }
+    
+    wrapper.style.display = 'flex';
+    
+    // Hide all forms first
+    ['login-form', 'signup-form', 'forgot-form'].forEach(id => {
+        const form = document.getElementById(id);
+        if (form) {
+            form.classList.add('hidden');
+            console.log(`Hidden form: ${id}`);
+        } else {
+            console.warn(`Form element not found: ${id}`);
+        }
+    });
+    
+    // Show target form
+    const targetForm = document.getElementById(`${type}-form`);
+    if (targetForm) {
+        targetForm.classList.remove('hidden');
+        console.log(`Showing form: ${type}-form`);
+    } else {
+        console.error(`Target form not found: ${type}-form`);
+    }
+}
+
+function hideAuth() {
+    console.log('hideAuth called'); // Debug log
+    const wrapper = document.getElementById('auth-wrapper');
+    if (wrapper) {
+        wrapper.style.display = 'none';
+        console.log('Auth wrapper hidden');
+    } else {
+        console.error('auth-wrapper element not found!');
+    }
+}
+
+// Add this function to test forgot password form opening
+function testForgotForm() {
+    console.log('Testing forgot form...');
+    showForm('forgot');
+}
+
+// Add event listeners for debugging
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, checking form elements...');
+    
+    // Check if required elements exist
+    const authWrapper = document.getElementById('auth-wrapper');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const forgotForm = document.getElementById('forgot-form');
+    
+    console.log('Auth wrapper:', authWrapper ? 'Found' : 'NOT FOUND');
+    console.log('Login form:', loginForm ? 'Found' : 'NOT FOUND');
+    console.log('Signup form:', signupForm ? 'Found' : 'NOT FOUND');
+    console.log('Forgot form:', forgotForm ? 'Found' : 'NOT FOUND');
+    
+    // Check for forgot password links/buttons
+    const forgotLinks = document.querySelectorAll('[onclick*="forgot"], .forgot-link, #forgot-link');
+    console.log('Found forgot password links:', forgotLinks.length);
+    
+    forgotLinks.forEach((link, index) => {
+        console.log(`Forgot link ${index}:`, link);
+    });
+});
+
+function togglePassword(el) {
+    const input = el.previousElementSibling;
+    if (input) {
+        input.type = input.type === 'password' ? 'text' : 'password';
+        el.classList.toggle('fa-eye-slash');
+    }
+}
+
+function checkStrength(input) {
+    const strength = document.getElementById('password-strength');
+    if (!strength) return;
+    
+    const val = input.value;
+    if (val.length < 6) {
+        strength.textContent = '❌ Weak - Use at least 6 characters';
+        strength.style.color = 'red';
+    } else if (val.match(/[A-Z]/) && val.match(/[0-9]/) && val.match(/[^A-Za-z0-9]/)) {
+        strength.textContent = '✅ Very Strong';
+        strength.style.color = 'green';
+    } else if (val.match(/[A-Z]/) && val.match(/[0-9]/)) {
+        strength.textContent = '✅ Strong';
+        strength.style.color = 'green';
+    } else {
+        strength.textContent = '⚠️ Medium - Add numbers and uppercase';
+        strength.style.color = 'orange';
+    }
+}
+
+// Helper function to login user
+function login(email) {
+    isLoggedIn = true;
+    userEmail = email;
+    localStorage.setItem('cybglo-loggedin', 'true');
+    localStorage.setItem('cybglo-user-email', email);
+    showLoggedInState();
+    initializeChatbot();
+}
+
+// Helper function to show custom alert
+function showCustomAlert(message) {
+    alert(message);
+}
+
+function handleSignup(e) {
+    e.preventDefault();
+    const data = {
+        email: document.getElementById('signup-email').value.trim(),
+        password: document.getElementById('signup-password').value.trim(),
+        city: document.getElementById('signup-city').value.trim(),
+        country: document.getElementById('signup-country').value.trim()
+    };
+
+    // Client-side validation
+    if (!data.email || !data.password || !data.city || !data.country) {
+        showCustomAlert('❌ Please fill in all required fields.');
+        return;
+    }
+
+    if (!data.email.includes('@')) {
+        showCustomAlert('❌ Please enter a valid email address.');
+        return;
+    }
+
+    if (data.password.length < 6) {
+        showCustomAlert('❌ Password must be at least 6 characters long.');
+        return;
+    }
+
+    fetch('https://cybglo-backend.onrender.com/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json().then(json => ({ status: res.status, json })))
+    .then(({ status, json }) => {
+        if (status === 201) {
+            showCustomAlert('✅ Account created successfully! You can now log in.');
+            showForm('login');
+        } else {
+            showCustomAlert('❌ ' + json.message);
+        }
+    })
+    .catch(() => showCustomAlert('❌ Error connecting to server.'));
+}
+
+function handleLogin(e) {
+    e.preventDefault();
+    const data = {
+        email: document.getElementById('login-email').value.trim(),
+        password: document.getElementById('login-password').value.trim()
+    };
+
+    // Client-side validation
+    if (!data.email || !data.password) {
+        showCustomAlert('❌ Please fill in both email and password fields.');
+        return;
+    }
+
+    if (!data.email.includes('@')) {
+        showCustomAlert('❌ Please enter a valid email address.');
+        return;
+    }
+
+    fetch('https://cybglo-backend.onrender.com/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json().then(json => ({ status: res.status, json })))
+    .then(({ status, json }) => {
+        if (status === 200) {
+            login(data.email);
+            showCustomAlert('✅ Login successful! Welcome to CYBGLO.');
+            hideAuth();
+        } else {
+            showCustomAlert('❌ ' + json.message);
+        }
+    })
+    .catch(() => showCustomAlert('❌ Error connecting to server.'));
+}
+
+function handleForgot(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('forgot-email')?.value.trim();
+    const newPassword = document.getElementById('forgot-new')?.value.trim();
+    const confirmPassword = document.getElementById('forgot-confirm')?.value.trim();
+
+    if (!email || !newPassword || !confirmPassword) {
+        showCustomAlert('❌ Please fill in all fields.');
+        return false;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showCustomAlert('❌ Invalid email format.');
+        return false;
+    }
+
+    if (newPassword !== confirmPassword) {
+        showCustomAlert('❌ Passwords do not match.');
+        return false;
+    }
+
+    if (newPassword.length < 6) {
+        showCustomAlert('❌ Password must be at least 6 characters long.');
+        return false;
+    }
+
+    fetch('https://cybglo-backend.onrender.com/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, newPassword })
+    })
+    .then(res => res.json().then(json => ({ status: res.status, json })))
+    .then(({ status, json }) => {
+        if (status === 200) {
+            showCustomAlert('✅ Password reset successful. You can now log in.');
+            showForm('login');
+        } else {
+            showCustomAlert('❌ ' + json.message);
+        }
+    })
+    .catch(() => showCustomAlert('❌ Error connecting to server.'));
+
+    return false;
+}
+
+
+function handleLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+        // Clear login data
+        localStorage.removeItem('cybglo-loggedin');
+        localStorage.removeItem('cybglo-user-email');
+        localStorage.removeItem('cybglo-welcome-shown'); // Clear welcome flag too
+        
+        // Reset state
+        isLoggedIn = false;
+        userEmail = '';
+        
+        // Update UI
+        showGuestState();
+        
+        alert('✅ You have been logged out successfully.');
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Prevent chatbot access for guests
+document.addEventListener('click', function(e) {
+    if (e.target.closest('#chatbot-icon') && !isLoggedIn) {
+        e.preventDefault();
+        alert('🔒 Chatbot access is restricted to account holders only. Please login to continue.');
+        showForm('login');
+    }
+});
+
+// Additional security - hide chatbot if someone tries to manually show it
+setInterval(function() {
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotBox = document.getElementById('chatbot-box');
+    if (!isLoggedIn && chatbotIcon && chatbotIcon.classList.contains('show')) {
+        chatbotIcon.classList.remove('show');
+        if (chatbotBox) chatbotBox.classList.add('hidden');
+    }
+}, 1000);
+
+// Welcome message for new users
+function showWelcomeMessage() {
+    if (isLoggedIn && !localStorage.getItem('cybglo-welcome-shown')) {
+        setTimeout(() => {
+            alert('🎉 Welcome to CYBGLO Premium Features!\n\n✅ AI Chatbot Support Unlocked\n✅ Personalized Cyber Security Assistance\n✅ Interactive Learning Experience\n\nClick the robot icon to start chatting!');
+            localStorage.setItem('cybglo-welcome-shown', 'true');
+        }, 2000);
+    }
+}
+
+// Show welcome message after login
+if (isLoggedIn) {
+    showWelcomeMessage();
+}
+
+// Keyboard accessibility for chatbot
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const chatbotBox = document.getElementById('chatbot-box');
+        const authWrapper = document.getElementById('auth-wrapper');
+        
+        if (chatbotBox && !chatbotBox.classList.contains('hidden')) {
+            closeChatbot();
+        }
+        if (authWrapper && authWrapper.style.display === 'flex') {
+            hideAuth();
+        }
+    }
+});
+
+// Handle window resize for mobile responsiveness
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        const navLinks = document.querySelector('.nav-links');
+        const mobileToggle = document.querySelector('.mobile-nav-toggle');
+        if (navLinks) navLinks.classList.remove('active');
+        if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+    }
+});
+
+// Auto-hide alerts for better UX
+const originalAlert = window.alert;
+window.alert = function(message) {
+    const alertDiv = document.createElement('div');
+    alertDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #00b4db, #0083b0);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 10000;
+        font-weight: bold;
+        max-width: 300px;
+        animation: slideInRight 0.3s ease;
+    `;
+    
+    // Add slide-in animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    alertDiv.textContent = message;
+    document.body.appendChild(alertDiv);
+    
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+        alertDiv.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (alertDiv.parentNode) {
+                alertDiv.parentNode.removeChild(alertDiv);
+            }
+        }, 300);
+    }, 3000);
+    
+    // Allow manual close on click
+    alertDiv.addEventListener('click', () => {
+        alertDiv.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            if (alertDiv.parentNode) {
+                alertDiv.parentNode.removeChild(alertDiv);
+            }
+        }, 300);
+    });
+};
+
+function downloadSection(button) {
+    const section = button.closest('section').cloneNode(true);
+    const title = section.querySelector('h2')?.textContent || 'section';
+    
+    // Remove the download button to avoid saving it in the PDF
+    const btn = section.querySelector('.download-btn');
+    if (btn) btn.remove();
+
+    // Create developer note with timestamp
+    const devNote = document.createElement('div');
+    devNote.style.marginTop = '20px';
+    devNote.style.fontSize = '12px';
+    devNote.style.color = '#555';
+    devNote.style.textAlign = 'center';
+
+    const now = new Date();
+    const timestamp = now.toLocaleString();
+    devNote.innerHTML = `Downloaded from <strong>CYBGLO</strong> | Note created by developers | <em>${timestamp}</em>`;
+    
+    section.appendChild(devNote);
+
+    // Check if html2pdf is available
+    if (typeof html2pdf !== 'undefined') {
+        // PDF options
+        const opt = {
+            margin: 0.5,
+            filename: title.replace(/\s+/g, '_').toLowerCase() + '.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        // Generate and save PDF
+        html2pdf().set(opt).from(section).save();
+        
+        // Log the download if user is logged in
+        if (isLoggedIn) {
+            fetch('https://cybglo.onrender.com/download-log', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ section: title, email: userEmail })
+            }).catch(err => console.log('Logging failed:', err));
+        }
+    } else {
+        alert('PDF generation library not loaded. Please ensure html2pdf.js is included.');
+    }
+}
+    </script>
+
+</body>
+</html>
