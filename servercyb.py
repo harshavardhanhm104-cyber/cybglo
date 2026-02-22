@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import re
 import io
-import os  # ✅ Added for Render port handling
+import os  
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
@@ -16,18 +16,15 @@ import string
 app = Flask(__name__)
 CORS(app, origins=["https://cybglo.onrender.com"])
 
-# ✅ Root endpoint for Render health check
 @app.route("/")
 def home():
     return "Welcome to CYBGLO API"
 
-# Connect to MongoDB Atlas
-client = MongoClient("mongodb+srv://harshavardhansss567:MJTq6vqF6H5dZcQY@cluster0.b1drhgu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") 
+client = MongoClient("mongodb+srv://(my mongodb url(not visible for the users") 
 db = client["cybglo"]
 users = db["users"]
-reset_tokens = db["reset_tokens"]  # New collection for password reset tokens. update this code if the 
+reset_tokens = db["reset_tokens"] 
 
-# Validation functions
 def is_valid_email(email):
     return re.match(r'^[\w\.-]+@[\w\.-]+\.\w+$', email)
 
@@ -38,7 +35,6 @@ def generate_reset_token():
     """Generate a secure random token for password reset"""
     return ''.join(secrets.choice(string.ascii_letters + string.digits) for _ in range(32))
 
-# Routes
 @app.route("/signup", methods=["POST"])
 def signup():
     data = request.get_json()
@@ -104,25 +100,20 @@ def forgot_password():
     
     user = users.find_one({"email": email})
     if not user:
-        # For security, don't reveal if email exists or not
         return jsonify({"message": "If the email exists, a reset token has been sent"}), 200
     
-    # Generate reset token
     token = generate_reset_token()
     
-    # Store token in database (expires in 1 hour)
     reset_tokens.insert_one({
         "email": email,
         "token": token,
         "created_at": datetime.utcnow(),
-        "expires_at": datetime.utcnow().timestamp() + 3600  # 1 hour
+        "expires_at": datetime.utcnow().timestamp() + 3600  
     })
     
-    # In a real application, you would send this token via email
-    # For now, we'll return it in the response (remove this in production)
     return jsonify({
         "message": "Reset token generated",
-        "token": token  # Remove this line in production
+        "token": token  
     }), 200
 
 @app.route("/reset-password", methods=["POST"])
@@ -161,24 +152,20 @@ def generate_report():
     if not (section and email):
         return jsonify({"message": "Section and email are required"}), 400
     
-    # Verify user exists
     user = users.find_one({"email": email})
     if not user:
         return jsonify({"message": "User not found"}), 404
     
     try:
-        # Create PDF in memory
         buffer = io.BytesIO()
         doc = SimpleDocTemplate(buffer, pagesize=letter)
         styles = getSampleStyleSheet()
         story = []
         
-        # Title
         title = Paragraph(f"CybGlo Report - {section.title()}", styles['Title'])
         story.append(title)
         story.append(Spacer(1, 12))
         
-        # User info
         user_info = Paragraph(f"Generated for: {email}", styles['Normal'])
         story.append(user_info)
         
@@ -186,17 +173,14 @@ def generate_report():
         story.append(date_info)
         story.append(Spacer(1, 20))
         
-        # Section content (customize based on your sections)
         section_content = get_section_content(section)
         for paragraph in section_content:
             story.append(Paragraph(paragraph, styles['Normal']))
             story.append(Spacer(1, 12))
         
-        # Build PDF
         doc.build(story)
         buffer.seek(0)
         
-        # Log the download
         print(f"[PDF Generated] {email} generated {section} report at {datetime.utcnow()}")
         
         return send_file(
@@ -254,11 +238,10 @@ def get_user_profile():
     if not email:
         return jsonify({"message": "Email parameter is required"}), 400
     
-    user = users.find_one({"email": email}, {"password": 0})  # Exclude password
+    user = users.find_one({"email": email}, {"password": 0})  
     if not user:
         return jsonify({"message": "User not found"}), 404
     
-    # Convert ObjectId to string for JSON serialization
     user["_id"] = str(user["_id"])
     user["created_at"] = user["created_at"].isoformat()
     
